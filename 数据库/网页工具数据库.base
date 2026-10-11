@@ -1,0 +1,6 @@
+views:
+  - type: table
+    name: 视图
+    filters:
+      and:
+        - file.inFolder("资源/网页工具")
