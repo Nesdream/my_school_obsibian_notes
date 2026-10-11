@@ -7,12 +7,13 @@ tags:
   - 网页工具
   - 电子书
   - 数字图书馆
+  - 可能需要翻墙
 aliases:
   - Z-Lib
   - zlibrary
   - 影子图书馆
 官网: https://z-library.sk/
-GitHub: 
+GitHub:
 ---
 
 # Z-Library
