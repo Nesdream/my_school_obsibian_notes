@@ -4,3 +4,7 @@ views:
     filters:
       and:
         - file.inFolder("资源/网页工具")
+    order:
+      - file.name
+      - 网页工具描述
+      - tags
