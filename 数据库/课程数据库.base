@@ -1,0 +1,11 @@
+views:
+  - type: table
+    name: 视图
+    filters:
+      and:
+        - file.inFolder("资源/课程")
+    order:
+      - file.name
+      - 课程描述
+      - tags
+    sort: []

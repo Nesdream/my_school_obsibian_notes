@@ -1,0 +1,11 @@
+views:
+  - type: table
+    name: 视图
+    filters:
+      and:
+        - file.inFolder("资源/图书")
+    order:
+      - file.name
+      - 图书描述
+      - tags
+    sort: []

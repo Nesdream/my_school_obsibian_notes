@@ -1,0 +1,11 @@
+views:
+  - type: table
+    name: 视图
+    filters:
+      and:
+        - file.inFolder("笔记/软件笔记")
+        - file.hasTag("汇总")
+    order:
+      - file.name
+      - tags
+    sort: []

@@ -98,6 +98,7 @@ Git 是 Linus Torvalds 开发的分布式版本控制系统，用于跟踪文件
 - GitHub：https://github.com/git/git
 - 下载：https://git-scm.com/downloads
 - 文档：《Pro Git》https://git-scm.com/book/
+- 使用笔记：[[笔记/软件笔记/Git 汇总|Git 汇总]]
 
 ## 社区生态
 
