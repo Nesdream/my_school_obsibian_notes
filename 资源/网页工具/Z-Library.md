@@ -13,7 +13,6 @@ aliases:
   - zlibrary
   - 影子图书馆
 官网: https://z-library.sk/
-GitHub:
 ---
 
 # Z-Library
