@@ -4,7 +4,6 @@ up:
   - "[[软件工具]]"
 软件工具描述: 基于 Mihomo（Clash Meta）内核的跨平台图形化代理客户端，Clash for Windows 的社区延续版
 tags:
-  - 软件工具
   - 翻墙软件
   - 网络代理
 aliases:
