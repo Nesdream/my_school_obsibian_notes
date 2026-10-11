@@ -21,6 +21,7 @@ GitHub:
 > [官网](https://z-library.sk/)
 > [备用入口](https://1lib.sk/)
 > [状态监测](https://open-slum.org/)
+> [备用的备用](https://z-library.zlibry.online/)
 
 ## 一句话总结
 
