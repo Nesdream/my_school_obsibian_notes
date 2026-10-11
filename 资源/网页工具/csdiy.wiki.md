@@ -7,7 +7,8 @@ tags:
   - 学习
   - 计算机
   - 自学
+  - 需要翻墙
 ---
 >[! 链接]
->[官网](csdiy.wiki)
+>[官网](https://csdiy.wiki/)
 >
