@@ -5,10 +5,11 @@ up:
 软件工具描述: 开源的分布式版本控制系统，用于跟踪文件变更与多人协作开发
 tags:
   - 软件工具
+  - 开发工具
 aliases:
   - Git
-官网: "https://git-scm.com/"
-GitHub: "https://github.com/git/git"
+官网: https://git-scm.com/
+GitHub: https://github.com/git/git
 平台: Windows / macOS / Linux
 ---
 
