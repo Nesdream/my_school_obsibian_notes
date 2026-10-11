@@ -1,0 +1,11 @@
+views:
+  - type: table
+    name: 视图
+    filters:
+      and:
+        - file.inFolder("资源/软件工具")
+    order:
+      - file.name
+      - 软件工具描述
+      - tags
+    sort: []
