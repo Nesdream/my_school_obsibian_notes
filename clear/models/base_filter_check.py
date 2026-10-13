@@ -80,7 +80,15 @@ def strip_target(raw):
 rows = []
 for p in MD:
     in_fence = False
-    for n, line in enumerate(p.read_text(encoding='utf-8', errors='replace').split('\n'), 1):
+    lines = p.read_text(encoding='utf-8', errors='replace').split('\n')
+    # frontmatter 边界：第 1 行是 --- 时到下一个 --- 为止（只用来区分「正文里写坏的链接」）
+    fm_end = 0
+    if lines and lines[0].strip() == '---':
+        for _i in range(1, len(lines)):
+            if lines[_i].strip() == '---':
+                fm_end = _i + 1
+                break
+    for n, line in enumerate(lines, 1):
         if line.lstrip().startswith('```'):
             in_fence = not in_fence
             continue
@@ -95,7 +103,8 @@ for p in MD:
             rows.append({
                 'file': rel(p), 'line': n,
                 'raw': m.group(0), 'target': strip_target(m.group(1)),
-                'where': where, 'resolved': resolve(strip_target(m.group(1))) is not None,
+                'where': where, 'in_frontmatter': n <= fm_end,
+                'resolved': resolve(strip_target(m.group(1))) is not None,
             })
 
 for r in rows:
@@ -105,8 +114,10 @@ for r in rows:
         r['bucket'] = 'code'                      # Obsidian 不把代码里的 [[…]] 当链接
     elif r['file'].startswith('模板/'):
         r['bucket'] = 'template_placeholder'      # 模板占位符，套用前本就没有目标
-    elif r['file'].startswith('Clippings/') or r['file'].startswith('收集箱/'):
-        r['bucket'] = 'input_content'             # 输入内容本身的链接
+    elif r['in_frontmatter'] and (r['file'].startswith('Clippings/') or r['file'].startswith('收集箱/')):
+        r['bucket'] = 'input_content'             # 只认剪藏 frontmatter 的 author 等字段，属输入内容本身
+        # 正文（含 AI 自己写进 收集箱/ 的笔记）里指空的链接一律算 dangling，
+        # 否则「在收集箱里写坏链接」会被这个归类悄悄放过。
     else:
         r['bucket'] = 'dangling'                  # 真正的悬空链接
 
