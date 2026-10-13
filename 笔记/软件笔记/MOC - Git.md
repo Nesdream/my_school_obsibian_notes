@@ -4,42 +4,61 @@ up:
 tags:
   - 软件笔记
   - Git
-  - 汇总
+  - type/MOC
 ---
 
-# Git 汇总
+# MOC - Git
 
-> Git 使用知识点的总览，按工作流分组。
+> Git 全部知识点的主题地图：按上手顺序分组，每一行一句话说明它解决什么问题。刚接触就按顺序往下读；已经在用的，直接跳到对应那一组。
 
-## 起步
+## 核心知识点
 
-- [[git init 与 clone]]
-- [[git config]]
-- [[gitignore]]
+### 起步
 
-## 日常使用
+- [[git init 与 clone]] — 创建新仓库或复制已有仓库，是使用 Git 的第一步。
+- [[git config]] — 配置 Git 的用户身份、别名与行为。
+- [[gitignore]] — 用规则文件忽略无需版本管理的文件（依赖、日志、密钥等）。
 
-- [[git status 与 log]]
-- [[git add 与 commit]]
-- [[git diff]]
+### 日常使用
 
-## 分支与合并
+- [[git status 与 log]] — 查看当前工作区状态与提交历史，是最高频的两个查看命令。
+- [[git add 与 commit]] — 把改动加入暂存区（add），再提交进版本历史（commit）。
+- [[git diff]] — 查看文件改动的具体差异，用于提交前检查或对比版本。
 
-- [[git branch]]
-- [[git checkout 与 switch]]
-- [[git merge]]
-- [[git rebase]]
+### 分支与合并
 
-## 进阶与回退
+- [[git branch]] — 创建、查看、删除分支，实现并行开发。
+- [[git checkout 与 switch]] — 切换分支或恢复文件；switch 是切换分支的专用新命令。
+- [[git merge]] — 把另一个分支的改动合并到当前分支。
+- [[git rebase]] — 把当前分支的提交「变基」到另一分支顶端，使历史呈线性。
 
-- [[git stash]]
-- [[git reset 与 revert]]
+### 进阶与回退
 
-## 协作
+- [[git stash]] — 把未提交的改动暂存起来，让工作区回到干净状态。
+- [[git reset 与 revert]] — 回退提交：reset 移动指针（改写历史），revert 生成反向提交（保留历史）。
 
-- [[git 链接 GitHub]]
-- [[git remote 与 push]]
+### 协作
 
-## 相关
+- [[git 链接 GitHub]] — 把本地 Git 仓库关联到 GitHub 远程仓库并推送。
+- [[git remote 与 push]] — 与远程仓库交互：管理地址、拉取更新、推送本地提交。
 
-- [[资源/软件工具/Git|Git 软件介绍]]
+## 应用场景
+
+- **第一次在一台机器上用 Git** → [[git init 与 clone]] 建起仓库，[[git config]] 先把身份配好（以后每次提交的作者就是它）。
+- **写完一段代码，存一个版本** → [[git status 与 log]] 看现状 → [[git diff]] 确认改了什么 → [[git add 与 commit]] 提交进去。
+- **同时做两件事、不想互相干扰** → [[git branch]] 开分支 → [[git checkout 与 switch]] 切过去 → 做完回主分支用 [[git merge]] 合进来。
+- **改到一半，要临时去处理别的分支** → [[git stash]] 先把手上的改动收起来，回来再放出来。
+- **提交错了想撤回** → 还没推上去，用 [[git reset 与 revert]] 里的 `reset`（会改写历史）；**已经推上去的用 `revert`**（生成一个反向提交，安全）。注意 `reset --hard` 会永久丢掉未提交的改动。
+- **想让提交历史是一条直线** → [[git rebase]]。**只对自己本地、没推出去的分支用**：它改写历史，已 push 的分支再 rebase 会让协作者混乱。
+- **合并时撞上冲突** → [[git merge]] 会标出冲突文件，手动改完再 `git add` ＋ `git commit`；整件事想放弃就 `git merge --abort`。
+- **把代码放到 GitHub 上并持续同步** → [[git 链接 GitHub]] 关联远程仓库 → [[git remote 与 push]] 推送与拉取。
+- **不想让某些文件进版本库** → [[gitignore]] 加规则（依赖、日志、密钥）。
+
+## 相关主题
+
+- [[资源/软件工具/Git|Git 软件介绍]] — 这个工具本身：安装、平台、功能特性。
+- [[软件笔记]] — 软件笔记这一层的总入口。
+
+---
+
+*本页是主题地图（MOC）：上面每条的简介逐字取自对应笔记开头的说明句。要改内容请改那篇笔记，别只改这里。*
