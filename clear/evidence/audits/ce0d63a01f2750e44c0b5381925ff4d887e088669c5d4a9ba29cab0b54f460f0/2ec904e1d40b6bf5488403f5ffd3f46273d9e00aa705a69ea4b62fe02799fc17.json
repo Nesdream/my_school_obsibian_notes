@@ -1,0 +1,171 @@
+{
+  "schema_version": "clearai.audit.v2",
+  "kind": "goal_audit",
+  "step_id": "goal:g-mv62a6fjugxy",
+  "auditor_run_id": "46f647c9-4239-428d-a2af-f583f114f11b",
+  "rechecks": [],
+  "reuse": [],
+  "holds": "yes",
+  "results": [
+    {
+      "hypothesis": "h-dlq9i8",
+      "verdict": "support",
+      "basis": "项目数据库.base 三视图各带 and[inFolder(\"项目\")＋hasTag(整条叶子标签)]，复跑 direction_agrees 全 true；在 /tmp/eval2 副本放三份仅 status 标签不同的项目笔记，三视图各命中且仅命中自己那份（进行中/待处理/已完成 各 1）；asar 字节 2898430 的 tagMatches 为「文件标签以查询标签为前缀」，字节 3045099 的 not 类 test 支持多子条件。两条推翻条件（层级标签不能精确匹配、一个 .base 不能容多视图）均未触发。"
+    },
+    {
+      "hypothesis": "h-92w9e1",
+      "verdict": "support",
+      "basis": "asar 字节 3045099 的 not 过滤器 test 为「任一子条件为真即返回 false」，对应界面项 labelNoneOfTheFollowing；副本内加合成用例：无 frontmatter 碎片命中「待消化」，加 status/已归档 后随即退出，带 主页 标签的 收集箱/收集箱.md 与文件夹外笔记均不入选；真实库中未改 frontmatter 的剪藏命中恰 1。推翻条件未触发。"
+    }
+  ],
+  "anomalies": [
+    {
+      "what": "库根出现 .dsh-vision-router/artifacts/ 3 个 PNG（会话期落入，副本可见）；报告 §一:14-29 清单与 AGENTS.md §二:18-31 权限表都未登记它",
+      "matters": "no"
+    },
+    {
+      "what": "clear/reports/知识库重构-校验记录.md:38 仍记 diff 输出「20a21,26 / 新增 6 行」，而现树 home.md 为 28 行（我用 /tmp/home.orig 复算为 20a21,28，0 删 8 增）——判据 4 本身成立，记录过期",
+      "matters": "no"
+    },
+    {
+      "what": "clear/reports/知识库重构-校验记录.md:178 写「当次扫描 generated_at=11:34:57」，同一节 :180 与 clear/models/base_filter_check.out.json:2 均为 12:36:12，同节并存两个「当次」",
+      "matters": "no"
+    },
+    {
+      "what": "clear/models/base_filter_check.py:108-109 按文件路径把 收集箱/ 与 Clippings/ 下所有未解析链接归入 input_content，AI 自己在 收集箱/ 里写坏链接也不会算进 dangling；今天 收集箱/收集箱.md 的链接全部命中，0 未被掏空",
+      "matters": "no"
+    },
+    {
+      "what": "home.md:26-27 与 收集箱/收集箱.md:14-15 两处新增 callout 之间缺空行，`> [!工作流]`、`> [!消化流程]` 会并进上一个 callout 正文按普通文本渲染（其中的 wikilink 仍可点）",
+      "matters": "unclear"
+    },
+    {
+      "what": "结论称报告 233 行，实际 232 行（read 与 wc -l 一致）",
+      "matters": "no"
+    },
+    {
+      "what": "AGENTS.md §二:18-31 权限表与 §一:12 内容清单均未登记库根新文件 知识库工作流.md（它只出现在报告 §一:26 与 home.md:27 的挂载里）",
+      "matters": "no"
+    }
+  ],
+  "lessons": [
+    {
+      "lesson": "L1",
+      "verdict": "support",
+      "basis": "clear/goals/g-mv62a6fjugxy.md:20 记明四次失败皆因只传裸 32 位哈希、改传带 audit:pending: 前缀的完整 id 后当次通过，判据文本一字未改；与教训一致。"
+    },
+    {
+      "lesson": "L2",
+      "verdict": "support",
+      "basis": "同一句报错连出四次后才去读守卫比较条件（clear/goals/g-mv62a6fjugxy.md:20、报告 §八:170-172），记录确有其事，照做下次少走四次弯路。"
+    },
+    {
+      "lesson": "L3",
+      "verdict": "support",
+      "basis": "报告 §五:107-117 与 §八:180-186 并列交付时刻 41/123/18/103/7 与当次 43/128/19/110/8；我复跑 out.json（12:36:12）得同组数字，确证「改文件后不重跑即过期」，报告已改标注取数时刻。"
+    }
+  ],
+  "basis": "六条判据逐条复核通过：①5 个新文件存在非空（1856/666/256/643/361 B）；②两个 .base 用 PyYAML 解析成功，顶层键同为 views，项目库含 进行中/待处理/已完成 三视图，与既有 5 个 .base 同构（and 组内 inFolder＋hasTag）；③两个新主页 up→[[home]]，home.md:22-26 各有 callout 挂载；④home.md 对 /tmp/home.orig 复算 20a21,28、删除 0 行；⑤AGENTS.md:23-24 权限表、:77 模板表、:126-127 status//type/ 命名空间、:158-160「消化收集箱」＋触发口令齐备，§一~§十四 各一次；⑥在 /tmp 副本复跑产物自带脚本得：43 个 .md、字面 128/未解析 19（code 11＋template_placeholder 6＋input_content 2＝19）、渲染 110/8、dangling 逐条明细为空，与报告 §八、out.json（generated_at 12:36:12）逐字一致。两条判断在副本加合成用例后均支持（三态视图互斥且各命中 1；无 frontmatter 碎片进视图、加 status/已归档 即退出、带 主页 的主页不入选）；报告引用的 asar 三处代码（字节 2898430/2937384/3045099）与原文逐字吻合。库内另有会话期落入的 .dsh-vision-router 截图与用户安装的插件文件未登记，及报告三处过期记账，已记入 anomalies，不动摇六条判据。",
+  "shortfalls": [],
+  "refs": [
+    {
+      "path": "clear/goals/g-mv62a6fjugxy.md",
+      "line": 6
+    },
+    {
+      "path": "clear/reports/知识库重构-校验记录.md",
+      "line": 40
+    },
+    {
+      "path": "clear/reports/知识库重构-校验记录.md",
+      "line": 188
+    },
+    {
+      "path": "clear/reports/知识库重构-校验记录.md",
+      "line": 38
+    },
+    {
+      "path": "clear/reports/知识库重构-校验记录.md",
+      "line": 178
+    },
+    {
+      "path": "clear/models/base_filter_check.out.json",
+      "line": 17
+    },
+    {
+      "path": "clear/models/base_filter_check.py",
+      "line": 108
+    },
+    {
+      "path": "clear/models/base_filter_check.py",
+      "line": 193
+    },
+    {
+      "path": "数据库/收集箱数据库.base",
+      "line": 1
+    },
+    {
+      "path": "数据库/项目数据库.base",
+      "line": 1
+    },
+    {
+      "path": "项目/项目.md",
+      "line": 3
+    },
+    {
+      "path": "收集箱/收集箱.md",
+      "line": 3
+    },
+    {
+      "path": "收集箱/收集箱.md",
+      "line": 14
+    },
+    {
+      "path": "home.md",
+      "line": 22
+    },
+    {
+      "path": "home.md",
+      "line": 26
+    },
+    {
+      "path": "AGENTS.md",
+      "line": 23
+    },
+    {
+      "path": "AGENTS.md",
+      "line": 77
+    },
+    {
+      "path": "AGENTS.md",
+      "line": 126
+    },
+    {
+      "path": "AGENTS.md",
+      "line": 158
+    },
+    {
+      "path": "模板/项目模板.md",
+      "line": 5
+    },
+    {
+      "path": "知识库工作流.md",
+      "line": 65
+    },
+    {
+      "path": "clear/knowledge/negatives/n-u-wc5gba.json",
+      "line": 9
+    },
+    {
+      "path": "/tmp/home.orig",
+      "line": 1
+    },
+    {
+      "path": "/tmp/clearai-rerun-b30a12aa4b3a23c20e75d9104f0dbaec8d997d451e6678a08295d54461a4c95d/clear/models/base_filter_check.out.json",
+      "line": 2
+    }
+  ],
+  "card": "六条判据逐条复核通过：①5 个新文件存在非空（1856/666/256/643/361 B）；②两个 .base 用 PyYAML 解析成功，顶层键同为 views，项目库含 进行中/待处理/已完成 三视图，与既有 5 个 .base 同构（and 组内 inFolder＋hasTag）；③两个新主页 up→[[home]]，home.md:22-26 各有 callout 挂载；④home.md 对 /tmp/home.orig 复算 20a21,28、删除 0 行；⑤AGENTS.md:23-24 权限表、:77 模板表、:126-127 status//type/ 命名空间、:158-160「消化收集箱」＋触发口令齐备，§一~§十四 各一次；⑥在 /tmp 副本复跑产物自带脚本得：43 个 .md、字面 128/未解析 19（code 11＋template_placeholder 6＋input_content 2＝19）、渲染 110/8、dangling 逐条明细为空，与报告 §八、out.json（generated_at 12:36:12）逐字一致。两条判断在副本加合成用例后均支持（三态视图互斥且各命中 1；无 frontmatter 碎片进视图、加 status/已归档 即退出、带 主页 的主页不入选）；报告引用的 asar 三处代码（字节 2898430/2937384/3045099）与原文逐字吻合。库内另有会话期落入的 .dsh-vision-router 截图与用户安装的插件文件未登记，及报告三处过期记账，已记入 anomalies，不动摇六条判据。",
+  "created_at": 1791866493391,
+  "evaluator": "independent"
+}

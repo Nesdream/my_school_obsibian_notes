@@ -1,0 +1,31 @@
+{
+  "id": "n-audit-pending-06e6b27e83c4311c0633a0c04c3f5810-u5",
+  "kind": "unresolved",
+  "status": "unresolved",
+  "statement": "home.md:26-27 与 收集箱/收集箱.md:14-15 两处新增 callout 之间缺空行，`> [!工作流]`、`> [!消化流程]` 会并进上一个 callout 正文按普通文本渲染（其中的 wikilink 仍可点）",
+  "touches": [],
+  "evidence": [],
+  "about": [
+    "inbox",
+    "project",
+    "status_tag"
+  ],
+  "scope": {
+    "conditions": {
+      "既有笔记": "不动",
+      "库": "/home/esdream/文档/school",
+      "导航层": "保持不变",
+      "触发方式": "会话触发"
+    },
+    "ranges": {}
+  },
+  "source": {
+    "session": "session-cc12e3d6-86e1-49c9-bb23-59bd3ca814e3",
+    "goal": "g-mv62a6fjugxy",
+    "anomaly": "audit:pending:06e6b27e83c4311c0633a0c04c3f5810#u5",
+    "by": "evaluator"
+  },
+  "review": null,
+  "at": 1791866493430,
+  "updated": 1791866493430
+}
