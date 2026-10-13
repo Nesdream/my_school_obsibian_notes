@@ -1,0 +1,37 @@
+{
+  "id": "n-u-hk8q67",
+  "kind": "unresolved",
+  "status": "explained",
+  "statement": "预测未覆盖：本次新建的 5 个文件（收集箱/收集箱.md、项目/项目.md、模板/项目模板.md、数据库/收集箱数据库.base、数据库/项目数据库.base）与 AGENTS.md 权限都是 600（-rw-------），而库内既有文件全是 664（-rw-rw-r--）。同一目录下两种权限并存，同组用户读不到新文件。",
+  "touches": [],
+  "evidence": [],
+  "about": [
+    "school 库根目录",
+    "inbox",
+    "project",
+    "status_tag"
+  ],
+  "scope": {
+    "conditions": {
+      "既有笔记": "不动",
+      "库": "/home/esdream/文档/school",
+      "导航层": "保持不变",
+      "触发方式": "会话触发"
+    },
+    "ranges": {}
+  },
+  "resolution": {
+    "outcome": "explained",
+    "reason": "成因查明：本次经沙箱新建的 6 个文件落盘时权限为 600，是新建文件的默认值，不是内容问题。已按库内既有约定执行 chmod 664；重查全库 48 个 .md/.base，权限全部为 664，两种权限并存的状态已消除。既有文件的权限一个未动。",
+    "by": "AGENTS.md §二「收集箱/ 可写：消化时读，原件只加 status/已归档」与 §十一「不删除、不移动收集箱里的碎片原件」"
+  },
+  "source": {
+    "session": "session-cc12e3d6-86e1-49c9-bb23-59bd3ca814e3",
+    "goal": "g-mv62a6fjugxy",
+    "anomaly": "u-hk8q67",
+    "by": "model"
+  },
+  "review": null,
+  "at": 1791858834406,
+  "updated": 1791858864023
+}

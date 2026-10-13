@@ -1,0 +1,41 @@
+{
+  "id": "n-u-wc5gba",
+  "kind": "unresolved",
+  "status": "escalated",
+  "statement": "预测是「悬空链接 0」，实际全库正文笔记里有 1 条悬空 wikilink：剪藏原文里的 `[[九章智算云]]`（文章作者名被写成了 wikilink）指向不存在的文件，图谱里会留下一个空节点。该文件按 AGENTS.md §十一 与 §二 属只读剪藏，不能改动。",
+  "touches": [],
+  "evidence": [
+    {
+      "ref": "Clippings/超详细版：Obsidian + Claude Code 搭建个人知识库实践指南.md"
+    }
+  ],
+  "about": [
+    "Clippings/超详细版：Obsidian + Claude Code 搭建个人知识库实践指南.md",
+    "inbox",
+    "project",
+    "status_tag"
+  ],
+  "scope": {
+    "conditions": {
+      "既有笔记": "不动",
+      "库": "/home/esdream/文档/school",
+      "导航层": "保持不变",
+      "触发方式": "会话触发"
+    },
+    "ranges": {}
+  },
+  "resolution": {
+    "outcome": "escalated",
+    "reason": "成因清楚且不涉及本次交付：`[[九章智算云]]` 是剪藏文章原文里的作者名被写成 wikilink，属于原始记录的固有内容，不是新建结构产生的悬空链接（收集箱与项目的 4 处链接均已验证命中真实文件）。但修它需要改动 `Clippings/` 下的文件，而该目录按 AGENTS.md §二、§十一 属只读、且是「原始记录一个字都不改」，AI 无权破例。故不自行处理，交人决定：留着（图谱里容忍一个空节点）或授权改这一处。",
+    "by": null
+  },
+  "source": {
+    "session": "session-cc12e3d6-86e1-49c9-bb23-59bd3ca814e3",
+    "goal": "g-mv62a6fjugxy",
+    "anomaly": "u-wc5gba",
+    "by": "model"
+  },
+  "review": null,
+  "at": 1791858834390,
+  "updated": 1791858864039
+}

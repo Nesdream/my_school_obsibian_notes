@@ -1,0 +1,215 @@
+{
+  "schema_version": "clearai.audit.v2",
+  "kind": "goal_audit",
+  "step_id": "goal:g-mv62a6fjugxy",
+  "auditor_run_id": "3f2d9f0b-7aa1-4769-bd32-968d9e8f7648",
+  "rechecks": [],
+  "reuse": [],
+  "holds": "no",
+  "results": [
+    {
+      "hypothesis": "h-dlq9i8",
+      "verdict": "support",
+      "basis": "两条推翻条件都不成立:asar tagMatches@2898430 为「文件标签以查询标签开头且等长或下一字符为 /」⇒ 层级标签可精确匹配;asar@3045911 逐条解析 views 数组、@3048657 setViewFilters 允许每个视图各自的 filters ⇒ 一个 .base 可容纳多视图。数据库/项目数据库.base:3,14,25 三视图各带 and:[inFolder(项目),hasTag(status/…)];复刻求值三视图各命中 0 个文件(库内暂无项目笔记),机制成立。界面渲染未实测(报告 §四 已登记)。"
+    },
+    {
+      "hypothesis": "h-92w9e1",
+      "verdict": "support",
+      "basis": "推翻条件不成立:asar@3040189 的 not 组 test() 是「任一子条件为真即返回 false」,UI 文案 aZ.labelNoneOfTheFollowing=「None of the following are true」,解析器@3051171 要求 not 的值必须是数组 ⇒「以下任一成立即不显示」语义成立。收集箱数据库.base:6-9 = inFolder(收集箱) + not[hasTag(主页),hasTag(status/已归档)];收集箱/收集箱.md:5 带 主页 标签故被排除;无 frontmatter 碎片入选、已归档碎片排除;复刻求值待消化视图命中 0 个文件。"
+    }
+  ],
+  "anomalies": [
+    {
+      "what": "clear/reports/知识库重构-校验记录.md:30 方法栏写「全库正则扫描 + 名称索引」，结果口径却是「正文笔记中 1 条」；按字面全库实为 13 条（AGENTS.md 规则示例 6、模板占位 6、剪藏 1），后 12 条未登记。两种口径下判据 6 的 0 目标都不成立，故不动摇结论",
+      "matters": "no"
+    },
+    {
+      "what": "标签 `项目` 只出现在新文件 模板/项目模板.md:5，库内既有 47 个 .md/.base 的 frontmatter 均无此标签，AGENTS.md:127 却把它列进「既有的结构类标签」清单，报告未按 §八「确需新增标签时…说明理由」给出理由；该标签不参与任何 .base 过滤",
+      "matters": "no"
+    }
+  ],
+  "lessons": [
+    {
+      "lesson": "L1",
+      "verdict": "support",
+      "basis": "本机确有 /opt/Obsidian/resources/obsidian.asar（25.7MB）；我在其中独立取到 tagMatches@2898430 与 inFolder@2937384（path.startsWith(folder+\"/\")），与 clear/reports/知识库重构-校验记录.md:50-51 所述一致，此法确实可复现且比搜教程直接。"
+    },
+    {
+      "lesson": "L2",
+      "verdict": "inconclusive",
+      "basis": "它自称凭据是「第二步第一次求值三个用例全部落空、改为从 .base 解析后重跑」，但在 clear/ 全目录 grep「落空/手抄/重跑/视图名当成」无任何命中，报告与计划（clear/goals/plans/p-mv62bzdxi6mr.md）也未记这次失败，故凭现记录判不了它是否真发生过。"
+    },
+    {
+      "lesson": "L3",
+      "verdict": "support",
+      "basis": "副本 find -printf '%m' 实测 48/48 全为 664，与报告 §五.2 描述一致；改前确有 600 与 664 并存并已 chmod 对齐，照此做下次能避免同组用户读不到新文件。"
+    },
+    {
+      "lesson": "L4",
+      "verdict": "support",
+      "basis": "库外副本确实存在：/tmp/home.orig（20 行/272B）对交付 home.md 为 0 删 6 增；/tmp/AGENTS.md.before-s4（175 行）对交付 AGENTS.md 为 10 删 38 增，与报告所称「0 删 6 增 / 10 删 38 增」逐字对上。"
+    },
+    {
+      "lesson": "L5",
+      "verdict": "support",
+      "basis": "本次确实放弃了 00_Inbox/04_Projects 式编号文件夹（结论「排除的候选一」），改用标签+视图：AGENTS.md:124「改状态＝改这一行，不要移动文件」与 数据库/项目数据库.base 的三视图过滤即为该取舍的落地。"
+    }
+  ],
+  "basis": "判据 1–5 逐条满足:5 个新文件存在且非空(536/666/256/643/361 字节);7 个 .base 均以 views 为顶层键、PyYAML 解析通过,项目库含进行中/待处理/已完成 三视图;两主页 up→[[home]],home.md:22,25 各有 callout;home.md 对 /tmp/home.orig diff 仅 20a21,26(0 删 6 增,原 20 行逐行未变);AGENTS.md 203 行、13 节各一次,权限表两新目录/模板对照表项目模板/§八 status·type 命名空间/§十「消化收集箱」口令俱在,且无本机绝对路径。判据 6 后半段不成立:副本实扫 116 条 wikilink,按「正文笔记」口径 1 条悬空(Clippings/…:5 frontmatter author 的 [[九章智算云]],报告自记 ⚠️ 1 条),按字面「全库」口径 13 条(另含 AGENTS.md 规则示例 6、模板占位 6),「0 个」未达成;该链接在只读剪藏内,AI 无权改,已交人决定。故交付判「不成立」,缺口仅此一条判据。独立复跑:权限 48/48=664;/tmp/AGENTS.md.before-s4(175 行)对交付版为 10 删 38 增,与报告一致;/opt/Obsidian/resources/obsidian.asar 内 tagMatches@2898430、inFolder@2937384、not 组 test@3040189(任一子条件真即返回假,UI 文案 labelNoneOfTheFollowing)、views 逐条解析@3045911 与 setViewFilters@3048657,与报告 §三 所述语义一致。做的人提议的过滤求值脚本未留在库里,我按上述真实语义在副本复算:4 个视图各命中 0 个文件。",
+  "shortfalls": [
+    {
+      "criterion": "6) …且全库 wikilink 无悬空（0 个指向不存在文件）",
+      "what": "副本全库扫描 116 条 wikilink，13 条指向不存在文件：Clippings/超详细版：Obsidian + Claude Code 搭建个人知识库实践指南.md:5 的 [[九章智算云]]（正文笔记口径唯一 1 条，clear/reports/知识库重构-校验记录.md:30 自记 ⚠️），另 12 条在 AGENTS.md 规则示例与模板占位符里",
+      "missing": "「0 个」未达成；须由人决定容忍并登记例外，或授权改剪藏那一处（AGENTS.md §二/§十一 禁止 AI 改 Clippings/）"
+    }
+  ],
+  "refs": [
+    {
+      "path": "clear/reports/知识库重构-校验记录.md",
+      "line": 11
+    },
+    {
+      "path": "clear/reports/知识库重构-校验记录.md",
+      "line": 26
+    },
+    {
+      "path": "clear/reports/知识库重构-校验记录.md",
+      "line": 30
+    },
+    {
+      "path": "clear/reports/知识库重构-校验记录.md",
+      "line": 50
+    },
+    {
+      "path": "clear/reports/知识库重构-校验记录.md",
+      "line": 63
+    },
+    {
+      "path": "clear/reports/知识库重构-校验记录.md",
+      "line": 68
+    },
+    {
+      "path": "clear/goals/g-mv62a6fjugxy.md",
+      "line": 6
+    },
+    {
+      "path": "clear/goals/plans/p-mv62bzdxi6mr.md",
+      "line": 8
+    },
+    {
+      "path": "clear/knowledge/negatives/n-u-wc5gba.json",
+      "line": 1
+    },
+    {
+      "path": "clear/knowledge/negatives/n-u-hk8q67.json",
+      "line": 1
+    },
+    {
+      "path": "clear/ontology/verification-loop.md",
+      "line": 112
+    },
+    {
+      "path": "home.md",
+      "line": 22
+    },
+    {
+      "path": "home.md",
+      "line": 25
+    },
+    {
+      "path": "数据库/项目数据库.base",
+      "line": 3
+    },
+    {
+      "path": "数据库/项目数据库.base",
+      "line": 14
+    },
+    {
+      "path": "数据库/项目数据库.base",
+      "line": 25
+    },
+    {
+      "path": "数据库/收集箱数据库.base",
+      "line": 6
+    },
+    {
+      "path": "数据库/收集箱数据库.base",
+      "line": 7
+    },
+    {
+      "path": "收集箱/收集箱.md",
+      "line": 3
+    },
+    {
+      "path": "收集箱/收集箱.md",
+      "line": 5
+    },
+    {
+      "path": "收集箱/收集箱.md",
+      "line": 17
+    },
+    {
+      "path": "项目/项目.md",
+      "line": 3
+    },
+    {
+      "path": "项目/项目.md",
+      "line": 19
+    },
+    {
+      "path": "模板/项目模板.md",
+      "line": 3
+    },
+    {
+      "path": "AGENTS.md",
+      "line": 23
+    },
+    {
+      "path": "AGENTS.md",
+      "line": 76
+    },
+    {
+      "path": "AGENTS.md",
+      "line": 110
+    },
+    {
+      "path": "AGENTS.md",
+      "line": 124
+    },
+    {
+      "path": "AGENTS.md",
+      "line": 125
+    },
+    {
+      "path": "AGENTS.md",
+      "line": 127
+    },
+    {
+      "path": "AGENTS.md",
+      "line": 154
+    },
+    {
+      "path": "AGENTS.md",
+      "line": 156
+    },
+    {
+      "path": "Clippings/超详细版：Obsidian + Claude Code 搭建个人知识库实践指南.md",
+      "line": 5
+    },
+    {
+      "path": "/tmp/home.orig",
+      "line": 1
+    },
+    {
+      "path": "/tmp/AGENTS.md.before-s4",
+      "line": 1
+    },
+    {
+      "path": "/opt/Obsidian/resources/obsidian.asar",
+      "line": 1
+    }
+  ],
+  "card": "判据 1–5 逐条满足:5 个新文件存在且非空(536/666/256/643/361 字节);7 个 .base 均以 views 为顶层键、PyYAML 解析通过,项目库含进行中/待处理/已完成 三视图;两主页 up→[[home]],home.md:22,25 各有 callout;home.md 对 /tmp/home.orig diff 仅 20a21,26(0 删 6 增,原 20 行逐行未变);AGENTS.md 203 行、13 节各一次,权限表两新目录/模板对照表项目模板/§八 status·type 命名空间/§十「消化收集箱」口令俱在,且无本机绝对路径。判据 6 后半段不成立:副本实扫 116 条 wikilink,按「正文笔记」口径 1 条悬空(Clippings/…:5 frontmatter author 的 [[九章智算云]],报告自记 ⚠️ 1 条),按字面「全库」口径 13 条(另含 AGENTS.md 规则示例 6、模板占位 6),「0 个」未达成;该链接在只读剪藏内,AI 无权改,已交人决定。故交付判「不成立」,缺口仅此一条判据。独立复跑:权限 48/48=664;/tmp/AGENTS.md.before-s4(175 行)对交付版为 10 删 38 增,与报告一致;/opt/Obsidian/resources/obsidian.asar 内 tagMatches@2898430、inFolder@2937384、not 组 test@3040189(任一子条件真即返回假,UI 文案 labelNoneOfTheFollowing)、views 逐条解析@3045911 与 setViewFilters@3048657,与报告 §三 所述语义一致。做的人提议的过滤求值脚本未留在库里,我按上述真实语义在副本复算:4 个视图各命中 0 个文件。",
+  "created_at": 1791859147067,
+  "evaluator": "independent"
+}

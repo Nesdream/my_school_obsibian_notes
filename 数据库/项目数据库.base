@@ -1,0 +1,34 @@
+views:
+  - type: table
+    name: 进行中
+    filters:
+      and:
+        - file.inFolder("项目")
+        - file.hasTag("status/进行中")
+    order:
+      - file.name
+      - 截止日期
+      - tags
+    sort: []
+  - type: table
+    name: 待处理
+    filters:
+      and:
+        - file.inFolder("项目")
+        - file.hasTag("status/待处理")
+    order:
+      - file.name
+      - 截止日期
+      - tags
+    sort: []
+  - type: table
+    name: 已完成
+    filters:
+      and:
+        - file.inFolder("项目")
+        - file.hasTag("status/已完成")
+    order:
+      - file.name
+      - 截止日期
+      - tags
+    sort: []
