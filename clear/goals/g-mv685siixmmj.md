@@ -16,12 +16,12 @@
   - scope: {"conditions":{"改名授权":"用户 m01322「是，而且要考虑有人会阅读」","改动性质":"结构型（改既有文件的文件名与标签）","库":"school","读者":"开源后的人类读者","插件":"核心 Bases"},"ranges":{}}
   - uses (framing declarations): []
   - 断言:1 条
-- `h-zq31bg` [proposed] 把 `Git 汇总.md` 改名为 `MOC - Git.md` 并把标签 `汇总` 换成 `type/MOC`、同时把 `数据库/软件笔记数据库.base` 的过滤改成 `file.hasTag("type/MOC")`，该视图仍能命中这一页（命中数从 1 变 0 即为推翻）
+- `h-zq31bg` [alive] 把 `Git 汇总.md` 改名为 `MOC - Git.md` 并把标签 `汇总` 换成 `type/MOC`、同时把 `数据库/软件笔记数据库.base` 的过滤改成 `file.hasTag("type/MOC")`，该视图仍能命中这一页（命中数从 1 变 0 即为推翻）
   - 推翻条件:复算视图过滤式得 0 条，或该文件从视图中消失
   - scope: {"conditions":{"改名授权":"用户 m01322「是，而且要考虑有人会阅读」","改动性质":"结构型（改既有文件的文件名与标签）","库":"school","读者":"开源后的人类读者","插件":"核心 Bases"},"ranges":{}}
   - uses (framing declarations): []
   - 断言:1 条
-- `h-cfre8z` [proposed] 改名并同步两处入链（`笔记/软件笔记/软件笔记.md`、`资源/软件工具/Git.md`）后，全库不再有指向 `Git 汇总` 的链接，且该 MOC 的每一条入链都指向真实存在的文件（扫描出任何 dangling 即为推翻）
+- `h-cfre8z` [alive] 改名并同步两处入链（`笔记/软件笔记/软件笔记.md`、`资源/软件工具/Git.md`）后，全库不再有指向 `Git 汇总` 的链接，且该 MOC 的每一条入链都指向真实存在的文件（扫描出任何 dangling 即为推翻）
   - 推翻条件:复跑 `clear/models/base_filter_check.py` 得到 `dangling` > 0，或仍存在指向旧文件名的 wikilink
   - scope: {"conditions":{"改名授权":"用户 m01322「是，而且要考虑有人会阅读」","改动性质":"结构型（改既有文件的文件名与标签）","库":"school","读者":"开源后的人类读者"},"ranges":{}}
   - uses (framing declarations): []

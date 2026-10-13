@@ -1,0 +1,157 @@
+{
+  "schema_version": "clearai.audit.v2",
+  "kind": "evidence_audit",
+  "step_id": "s3",
+  "auditor_run_id": "2c38a5e9-49e6-446a-935a-3502dc8a05cb",
+  "rechecks": [],
+  "reuse": [],
+  "holds": "yes",
+  "results": [
+    {
+      "hypothesis": "h-zq31bg",
+      "verdict": "support",
+      "basis": "`数据库/软件笔记数据库.base:7` 现为 `file.hasTag(\"type/MOC\")`（inFolder(\"笔记/软件笔记\") 保留）；副本复跑该视图命中 `['笔记/软件笔记/MOC - Git.md']`，恰 1 条，两个施受方向一致，未掉到 0。测试文件 sha256 复跑结果与报告 §四记录的 `a71ee0a1…` 相同。"
+    },
+    {
+      "hypothesis": "h-cfre8z",
+      "verdict": "support",
+      "basis": "`grep -rn '\\[\\[[^]]*Git 汇总' --include='*.md'`（排除 clear/）无命中；`软件笔记.md` 的 `>[[MOC - Git|Git]]`、`Git.md` 的 `[[笔记/软件笔记/MOC - Git|MOC - Git]]` 均命中真实文件；副本复跑脚本 dangling=0（未解析 21 条全部归入 code/template_placeholder/input_content，无 dangling 桶）。"
+    }
+  ],
+  "anomalies": [
+    {
+      "what": "报告 :15 把旧名残留记为「只剩 AGENTS.md §十五 的历史说明」，但全库 `汇总` 字面还在 AGENTS.md:147（§八「`#汇总` 曾与 `#type/MOC` 指同一件事…全库不再使用 `汇总`」）——也是历史说明，非活标签；实测无任何文件带 `#汇总` 标签或 `hasTag(\"汇总\")` 过滤。属措辞未穷举，未登记（影响小）",
+      "matters": "no"
+    },
+    {
+      "what": "报告 §一 :11 的 MOC 行数（65）与本仓库自己的行数口径（base_filter_check.py:268 的 count('\\n')，得 64）不一致；`artifacts` 清单（base_filter_check.py:28-30）也未收录该 MOC，故这一格数字是手抄、无脚本来源",
+      "matters": "no"
+    }
+  ],
+  "lessons": [],
+  "basis": "判据逐条复跑通过。① `笔记/软件笔记/MOC - Git.md` 存在、3594 B、sha256 a71ee0a1…（与报告 §四一致），`Git 汇总.md` 已不存在。② frontmatter `tags: 软件笔记/Git/type/MOC`，无 `汇总`；`up: [[软件笔记]]`。③ 我按报告同一口径（取 MOC「核心知识点」段 `- [[X]] — Y` 与源笔记第一个 `> ` 行严格相等）独立复算：14/14 逐字一致，且恰好覆盖 `笔记/软件笔记/git*.md` 全部 14 篇，无漏无多。④ `## 应用场景`（:45）与 `## 相关主题`（:57）两块都在。⑤ 全库（除 `clear/`）指向旧名的 wikilink 为 0；`Git 汇总` 字面只余 `AGENTS.md:147`/`:238` 的历史说明。⑥ 在 `/tmp/clearai-rerun-…` 副本内跑 `clear/models/base_filter_check.py`（复制自现行版本），得 dangling=0、`软件笔记数据库` 命中恰 1 条 `['笔记/软件笔记/MOC - Git.md']`，与报告 §二、`out.json`（generated_at 13:14:33）逐项相同；副本与原库内容文件逐字节一致（AGENTS.md、MOC 两文件 sha256 相同）。两条判断的推翻条件均未触发：视图命中 1≠0，dangling=0，两处入链确已改指新名（`软件笔记.md`、`资源/软件工具/Git.md`）。报告 §五的残余风险属实（Bases 渲染、应用场景三处引用经核源自源笔记行）。",
+  "shortfalls": [
+    {
+      "criterion": "报告存在且非空，列出 dangling 值、视图命中清单与条数、旧名残留处清单、14 条简介的一致性比对结果、以及未能本机验证的残余风险",
+      "what": "clear/reports/MOC-迁移校验.md:11 记「新文件 3594 B / 65 行」；同报告 :21-22 引的取数脚本在 clear/models/base_filter_check.py:268 用 `count('\\n')` 计行，我按该口径与 `wc -l` 两种算法在副本上复算均为 64（bytes 3594 与 :11 一致）。",
+      "missing": "把 65 行改成 64 行（或写明「含末尾空行」的计数口径），否则该格数字与本报告自己的行数口径不自洽"
+    }
+  ],
+  "refs": [
+    {
+      "path": "clear/reports/MOC-迁移校验.md",
+      "line": 11
+    },
+    {
+      "path": "clear/reports/MOC-迁移校验.md",
+      "line": 15
+    },
+    {
+      "path": "clear/reports/MOC-迁移校验.md",
+      "line": 16
+    },
+    {
+      "path": "clear/reports/MOC-迁移校验.md",
+      "line": 22
+    },
+    {
+      "path": "clear/reports/MOC-迁移校验.md",
+      "line": 33
+    },
+    {
+      "path": "clear/reports/MOC-迁移校验.md",
+      "line": 48
+    },
+    {
+      "path": "clear/reports/MOC-迁移校验.md",
+      "line": 64
+    },
+    {
+      "path": "clear/reports/MOC-迁移校验.md",
+      "line": 72
+    },
+    {
+      "path": "笔记/软件笔记/MOC - Git.md",
+      "line": 3
+    },
+    {
+      "path": "笔记/软件笔记/MOC - Git.md",
+      "line": 7
+    },
+    {
+      "path": "笔记/软件笔记/MOC - Git.md",
+      "line": 14
+    },
+    {
+      "path": "笔记/软件笔记/MOC - Git.md",
+      "line": 45
+    },
+    {
+      "path": "笔记/软件笔记/MOC - Git.md",
+      "line": 57
+    },
+    {
+      "path": "笔记/软件笔记/MOC - Git.md",
+      "line": 18
+    },
+    {
+      "path": "笔记/软件笔记/MOC - Git.md",
+      "line": 43
+    },
+    {
+      "path": "笔记/软件笔记/MOC - Git.md",
+      "line": 64
+    },
+    {
+      "path": "笔记/软件笔记/软件笔记.md",
+      "line": 17
+    },
+    {
+      "path": "资源/软件工具/Git.md",
+      "line": 82
+    },
+    {
+      "path": "数据库/软件笔记数据库.base",
+      "line": 6
+    },
+    {
+      "path": "数据库/软件笔记数据库.base",
+      "line": 7
+    },
+    {
+      "path": "AGENTS.md",
+      "line": 238
+    },
+    {
+      "path": "AGENTS.md",
+      "line": 147
+    },
+    {
+      "path": "clear/models/base_filter_check.py",
+      "line": 174
+    },
+    {
+      "path": "clear/models/base_filter_check.py",
+      "line": 268
+    },
+    {
+      "path": "笔记/软件笔记/git rebase.md",
+      "line": 34
+    },
+    {
+      "path": "笔记/软件笔记/git reset 与 revert.md",
+      "line": 32
+    },
+    {
+      "path": "笔记/软件笔记/git merge.md",
+      "line": 32
+    },
+    {
+      "path": "笔记/软件笔记/git stash.md",
+      "line": 34
+    }
+  ],
+  "card": "判据逐条复跑通过。① `笔记/软件笔记/MOC - Git.md` 存在、3594 B、sha256 a71ee0a1…（与报告 §四一致），`Git 汇总.md` 已不存在。② frontmatter `tags: 软件笔记/Git/type/MOC`，无 `汇总`；`up: [[软件笔记]]`。③ 我按报告同一口径（取 MOC「核心知识点」段 `- [[X]] — Y` 与源笔记第一个 `> ` 行严格相等）独立复算：14/14 逐字一致，且恰好覆盖 `笔记/软件笔记/git*.md` 全部 14 篇，无漏无多。④ `## 应用场景`（:45）与 `## 相关主题`（:57）两块都在。⑤ 全库（除 `clear/`）指向旧名的 wikilink 为 0；`Git 汇总` 字面只余 `AGENTS.md:147`/`:238` 的历史说明。⑥ 在 `/tmp/clearai-rerun-…` 副本内跑 `clear/models/base_filter_check.py`（复制自现行版本），得 dangling=0、`软件笔记数据库` 命中恰 1 条 `['笔记/软件笔记/MOC - Git.md']`，与报告 §二、`out.json`（generated_at 13:14:33）逐项相同；副本与原库内容文件逐字节一致（AGENTS.md、MOC 两文件 sha256 相同）。两条判断的推翻条件均未触发：视图命中 1≠0，dangling=0，两处入链确已改指新名（`软件笔记.md`、`资源/软件工具/Git.md`）。报告 §五的残余风险属实（Bases 渲染、应用场景三处引用经核源自源笔记行）。",
+  "created_at": 1791868579740,
+  "evaluator": "independent"
+}
