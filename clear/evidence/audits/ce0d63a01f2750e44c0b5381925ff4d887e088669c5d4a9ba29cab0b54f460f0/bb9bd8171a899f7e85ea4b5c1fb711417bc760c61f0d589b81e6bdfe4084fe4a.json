@@ -1,0 +1,133 @@
+{
+  "schema_version": "clearai.audit.v2",
+  "kind": "goal_audit",
+  "step_id": "goal:g-mv62a6fjugxy",
+  "auditor_run_id": "95e2ca26-88b9-467e-9151-2af23526d1ab",
+  "rechecks": [],
+  "reuse": [],
+  "holds": "no",
+  "results": [
+    {
+      "hypothesis": "h-dlq9i8",
+      "verdict": "support",
+      "basis": "两条推翻条件均未触发：asar tagMatches（字节偏移 2898430，查询以文件标签为前缀且下一字符为 / 或等长）下整条叶子标签 status/进行中 可精确命中；项目数据库.base 解析出 3 个视图、各带自己的 and:[inFolder(\"项目\"),hasTag(\"status/…\")]，副本复跑三视图各命中 0（库内暂无项目笔记），不改文件即分三态机制成立。界面渲染未实测，报告 §六 已登记为残余风险，但不属本条推翻条件。"
+    },
+    {
+      "hypothesis": "h-92w9e1",
+      "verdict": "support",
+      "basis": "推翻条件不成立：asar 内 not 组 tQ.prototype.test 为「任一子条件为真即 return false」，UI 文案 labelNoneOfTheFollowing=「None of the following are true」，解析器要求 not 的值必须是数组。副本复跑：收集箱数据库.base:6-9 = inFolder(\"收集箱\") + not[hasTag(\"主页\"),hasTag(\"status/已归档\")]，命中恰好 1 个（未改 frontmatter 的剪藏），收集箱/收集箱.md（tags: 主页）不入选，无需写 frontmatter 的碎片入选、已归档碎片被同一 not 组排除。"
+    }
+  ],
+  "anomalies": [
+    {
+      "what": "clear/reports/知识库重构-校验记录.md:5 称「既有笔记一个字节未改」，但 8 个主页（资源/资源.md、资源/课程/课程.md、资源/软件工具/软件工具.md、资源/图书/图书.md、资源/网页工具/网页工具.md、笔记/笔记.md、笔记/软件笔记/软件笔记.md、模板/主页模板.md）的 mtime 均为 2026-10-13 10:05:37，早于本次首个新文件（10:29）；AGENTS.md:89 记有「全库已于 2026-10-13 统一」callout 写法，但报告 §一 与两份计划（clear/goals/plans/p-mv62bzdxi6mr.md:8）均未登记这批改动",
+      "matters": "unclear"
+    },
+    {
+      "what": "报告 §三 引 asar 偏移的基准不一致：clear/reports/知识库重构-校验记录.md:59 的 2898430 与 :69 的 2937384 是字节偏移（逐字吻合），:70 的 3040189 实为字符下标（该处字节偏移为 3045099）；三处代码本体我都取到了，只是第三方按字节偏移复核 :70 会扑空",
+      "matters": "no"
+    },
+    {
+      "what": "交付后 Clippings/ 于 10:51 新增一份剪藏（Clippings/AI＋Obsidian保姆级教程：教你从0搭建自己的AI个人知识库.md，34685 B），现库内 .md 为 42 个；报告里的「41 个 .md / 123 / 18 / 103 / 7」只在交付时快照（/tmp 副本）上可复现，在活动工作区复跑会得到不同读数",
+      "matters": "no"
+    }
+  ],
+  "lessons": [],
+  "basis": "判据 1–5 逐条满足：5 个新文件存在且非空（536/666/256/643/361 字节，与报告 §一 逐字一致）；两个 .base 经 PyYAML 解析出顶层 views，过滤式均 file.inFolder/file.hasTag，项目库含进行中/待处理/已完成 三视图；两主页 up→[[home]]，home.md:22、:25 各有 callout；对 /tmp/home.orig diff 仅 20a21,26（原 20 行逐行未变，前 20 行 sha256 相同）；AGENTS.md 208 行、§一~§十三 各一次，权限表两新目录（:23-24）、模板对照表项目模板（:76）、status/ 与 type/ 命名空间（:125-126）、「消化收集箱」六步与触发口令（:157-169）俱在。判据 6 后半「全库 wikilink 无悬空（0 个指向不存在文件）」不成立：在 /tmp 副本复跑 clear/models/base_filter_check.py，未解析字面 18 条、渲染口径 7 条，全部指向不存在文件（模板占位 6、剪藏输入内容 1、代码示例 11），报告 §五 自认「无论用哪个口径，『0 条未解析』都达不到」——故交付判不成立，缺口只此一条。两条判断的推翻条件都未被观测碰到：层级标签可精确匹配、一个 .base 可容多视图（asar tagMatches@字节 2898430；三视图各带 filters），not 组 test() 为「任一子条件真即返回假」（asar 字节 3045099），副本复跑「待消化」恰好命中 1 个未改 frontmatter 的剪藏、带主页标签的收集箱主页不入选、三项目视图各 0。",
+  "shortfalls": [
+    {
+      "criterion": "判据 6「…且全库 wikilink 无悬空（0 个指向不存在文件）」",
+      "what": "在 /tmp 副本复跑产物自带脚本，clear/models/base_filter_check.out.json:19-20 为 unresolved_literal=18、unresolved_rendered=7，18 条全部指向不存在文件（模板占位 6、剪藏输入内容 1、代码示例 11）；clear/reports/知识库重构-校验记录.md:120 自认「无论用哪个口径，『0 条未解析』都达不到」",
+      "missing": "若维持原判据，须把「0 个」改写成可证伪的口径（如「dangling=0 且例外逐条登记」），或消除这 7 条——后者与 AGENTS.md:119 的占位符例外、用户 m00475 保留剪藏链接的决定冲突"
+    }
+  ],
+  "refs": [
+    {
+      "path": "收集箱/收集箱.md",
+      "line": 16
+    },
+    {
+      "path": "项目/项目.md",
+      "line": 19
+    },
+    {
+      "path": "数据库/收集箱数据库.base",
+      "line": 7
+    },
+    {
+      "path": "数据库/项目数据库.base",
+      "line": 3
+    },
+    {
+      "path": "数据库/项目数据库.base",
+      "line": 25
+    },
+    {
+      "path": "模板/项目模板.md",
+      "line": 5
+    },
+    {
+      "path": "home.md",
+      "line": 22
+    },
+    {
+      "path": "/tmp/home.orig",
+      "line": 20
+    },
+    {
+      "path": "AGENTS.md",
+      "line": 89
+    },
+    {
+      "path": "AGENTS.md",
+      "line": 125
+    },
+    {
+      "path": "AGENTS.md",
+      "line": 157
+    },
+    {
+      "path": "clear/models/base_filter_check.py",
+      "line": 193
+    },
+    {
+      "path": "clear/models/base_filter_check.out.json",
+      "line": 19
+    },
+    {
+      "path": "clear/models/base_filter_check.out.json",
+      "line": 250
+    },
+    {
+      "path": "clear/reports/知识库重构-校验记录.md",
+      "line": 5
+    },
+    {
+      "path": "clear/reports/知识库重构-校验记录.md",
+      "line": 35
+    },
+    {
+      "path": "clear/reports/知识库重构-校验记录.md",
+      "line": 70
+    },
+    {
+      "path": "clear/reports/知识库重构-校验记录.md",
+      "line": 120
+    },
+    {
+      "path": "clear/goals/plans/p-mv62bzdxi6mr.md",
+      "line": 8
+    },
+    {
+      "path": "/opt/Obsidian/resources/obsidian.asar @byte",
+      "line": 2898430
+    },
+    {
+      "path": "/opt/Obsidian/resources/obsidian.asar @byte",
+      "line": 3045099
+    }
+  ],
+  "card": "判据 1–5 逐条满足：5 个新文件存在且非空（536/666/256/643/361 字节，与报告 §一 逐字一致）；两个 .base 经 PyYAML 解析出顶层 views，过滤式均 file.inFolder/file.hasTag，项目库含进行中/待处理/已完成 三视图；两主页 up→[[home]]，home.md:22、:25 各有 callout；对 /tmp/home.orig diff 仅 20a21,26（原 20 行逐行未变，前 20 行 sha256 相同）；AGENTS.md 208 行、§一~§十三 各一次，权限表两新目录（:23-24）、模板对照表项目模板（:76）、status/ 与 type/ 命名空间（:125-126）、「消化收集箱」六步与触发口令（:157-169）俱在。判据 6 后半「全库 wikilink 无悬空（0 个指向不存在文件）」不成立：在 /tmp 副本复跑 clear/models/base_filter_check.py，未解析字面 18 条、渲染口径 7 条，全部指向不存在文件（模板占位 6、剪藏输入内容 1、代码示例 11），报告 §五 自认「无论用哪个口径，『0 条未解析』都达不到」——故交付判不成立，缺口只此一条。两条判断的推翻条件都未被观测碰到：层级标签可精确匹配、一个 .base 可容多视图（asar tagMatches@字节 2898430；三视图各带 filters），not 组 test() 为「任一子条件真即返回假」（asar 字节 3045099），副本复跑「待消化」恰好命中 1 个未改 frontmatter 的剪藏、带主页标签的收集箱主页不入选、三项目视图各 0。",
+  "created_at": 1791860110720,
+  "evaluator": "independent"
+}
