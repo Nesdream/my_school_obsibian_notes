@@ -1,0 +1,157 @@
+{
+  "schema_version": "clearai.audit.v2",
+  "kind": "goal_audit",
+  "step_id": "goal:g-mv62a6fjugxy",
+  "auditor_run_id": "1d53770c-2462-4117-9413-94e4c45e2d6d",
+  "rechecks": [],
+  "reuse": [],
+  "holds": "yes",
+  "results": [
+    {
+      "hypothesis": "h-dlq9i8",
+      "verdict": "support",
+      "basis": "三条 views 同处一个 .base、各带自己的 filters(数据库/项目数据库.base:2,13,24);我独立读 /opt/Obsidian/resources/obsidian.asar 字节 2938182 的 hasTag 调用点,原文为 s.tagMatches(u),s 取自 e.getTags()(被查文件标签)、u 为查询标签,tagMatches 内 n.startsWith(i) ⇒ 叶子标签 status/进行中 精确命中;复跑脚本三视图 direction_agrees 全 true、互斥且并集为空。两条推翻条件均未触发。"
+    },
+    {
+      "hypothesis": "h-92w9e1",
+      "verdict": "support",
+      "basis": "我独立读 asar 字节 3045400 的 not.test:组内任一为真则整体为假(与界面 labelNoneOfTheFollowing 相符);复跑脚本「待消化」恰好命中 1 个未写 frontmatter 的剪藏,带 主页 标签的 收集箱/收集箱.md 不入选,文件夹外笔记 0。推翻条件(主页自身或已归档碎片仍出现)未触发;「归档后退出」这半只有过滤求值、无带 status/已归档 的真实实例。"
+    }
+  ],
+  "anomalies": [
+    {
+      "what": "报告 §一 记账数与实测对不上:收集箱/收集箱.md 记 1856 B(实测 1857)、clear/models/base_filter_check.py 记 10479 B(实测 11369)、home.md 记 28 行(实测 29)、AGENTS.md 记 214 行(实测 213);同报告 §二:39 自写 20a21,29 即 29 行,与 §一 自相矛盾。clear/reports/知识库重构-校验记录.md:16,21,22,24",
+      "matters": "no"
+    },
+    {
+      "what": ".obsidian/ 在交付窗口内另有未登记写入:plugins/realclaudian/main.js 11:01:55、plugins/obsidian-local-rest-api/* 11:02、workspace.json 12:41:34、fast-note-sync/*.json 12:25–12:43;报告 §一 只列 community-plugins.json 一行",
+      "matters": "unclear"
+    },
+    {
+      "what": "附件/ 目录权限 755,库内其余目录一律 775(collect箱/、项目/、数据库/ 等);报告 §二:46 只核 .md/.base 文件权限,未核目录权限",
+      "matters": "no"
+    },
+    {
+      "what": "审计条目 audit:pending:c3fb5415e9e18f555019ca494354ccd6#u3 的处置理由称「报告 §一 交付物清单里也补登了」10:51 那份新剪藏,但 §一 表内无该行,只在 §二:46 行文里出现——理由与产物对不上",
+      "matters": "no"
+    },
+    {
+      "what": "clear/knowledge/negatives/n-u-wc5gba.json:9 的 evidence 与 :28 的 resolution 仍按「修它需要改动 Clippings/ 下的文件」立论,而该文件已在本次交付中移入 收集箱/ 且内容未改;报告与 AGENTS.md 已更正、该条目未同步",
+      "matters": "no"
+    }
+  ],
+  "lessons": [
+    {
+      "lesson": "L1",
+      "verdict": "support",
+      "basis": "clear/goals/g-mv62a6fjugxy.md:20 留痕:四次只传 32 位十六进制皆「找不到」,改传带 audit:pending: 前缀的完整 id 后当次通过、目标定为 rev3——记录里确实发生过。"
+    },
+    {
+      "lesson": "L2",
+      "verdict": "support",
+      "basis": "异常 u5 记 home.md:26-27 与 收集箱/收集箱.md:14-15 的 callout 并进上一块;现两处均已留空行分隔、其余 callout 同构,照它做不会再并块。"
+    },
+    {
+      "lesson": "L3",
+      "verdict": "support",
+      "basis": "同 L1 的同一件事:同一句报错连续四次、换过五种 key 后才去读守卫源码,一行比较条件即解释全部失败——读发出报错的那行确实更快。"
+    },
+    {
+      "lesson": "L4",
+      "verdict": "support",
+      "basis": "我用 asar 字节 2938182 的调用点独立复核:s.tagMatches(u),s 取自被查文件 getTags(),方向是「文件标签以查询标签为前缀」,与报告 §三.1 及该条经验一致;本库全用叶子标签,direction_agrees 全 true。"
+    },
+    {
+      "lesson": "L5",
+      "verdict": "support",
+      "basis": "审计记录显示 c3fb5415 与 06e6b27e 两轮均因旧读数/旧行号被退回,此后 §二/§五/§八 改为同源于 out.json 并标取数时刻;不过报告 §一 现在的四处过期记账数正说明这条尚未贯彻到底(见 anomalies 第一条)。"
+    }
+  ],
+  "basis": "判据逐条满足(L3:在副本 /tmp/clearai-rerun-aa13… 复跑脚本 + 只读核对原件)。①5 个新文件存在且非空(收集箱.md 1857 B、项目.md 666 B、收集箱数据库.base 256 B、项目数据库.base 643 B、项目模板.md 361 B);②7 个 .base 全部 yaml.safe_load 通过,两个新的顶层键均为 views、过滤用 file.inFolder/file.hasTag,项目库含 进行中/待处理/已完成 三视图;③两主页 up 均指 [[home]],home.md 有 [!收集箱]/[!项目] 两处 callout;④对执行者自存的 /tmp/home.orig diff 为纯追加 20a21,29、删除 0 行(基线只能追到这份自存副本);⑤AGENTS.md 权限表含 收集箱/、项目/,模板对照表含 项目模板,§八 含 status/ 与 type/ 两命名空间,§十 含「消化收集箱」与触发口令;⑥我在副本复跑 clear/models/base_filter_check.py,得字面 128/未解析 19(code 11+template_placeholder 6+input_content 2=19)、渲染 110/8、dangling=0,与落盘 out.json 除 generated_at 外逐字段相同、与报告 §八 一致。既有笔记未被本次改动(10:05 那批 8 个主页早于交付窗口)。残留:报告 §一 四处记账数过期、.obsidian/ 内未登记写入,均不动摇上述判据。",
+  "shortfalls": [],
+  "refs": [
+    {
+      "path": "clear/goals/g-mv62a6fjugxy.md",
+      "line": 6
+    },
+    {
+      "path": "数据库/收集箱数据库.base",
+      "line": 2
+    },
+    {
+      "path": "数据库/项目数据库.base",
+      "line": 2
+    },
+    {
+      "path": "收集箱/收集箱.md",
+      "line": 22
+    },
+    {
+      "path": "项目/项目.md",
+      "line": 2
+    },
+    {
+      "path": "模板/项目模板.md",
+      "line": 2
+    },
+    {
+      "path": "home.md",
+      "line": 21
+    },
+    {
+      "path": "home.md",
+      "line": 25
+    },
+    {
+      "path": "AGENTS.md",
+      "line": 24
+    },
+    {
+      "path": "AGENTS.md",
+      "line": 78
+    },
+    {
+      "path": "AGENTS.md",
+      "line": 127
+    },
+    {
+      "path": "AGENTS.md",
+      "line": 161
+    },
+    {
+      "path": "clear/models/base_filter_check.py",
+      "line": 167
+    },
+    {
+      "path": "clear/models/base_filter_check.py",
+      "line": 204
+    },
+    {
+      "path": "clear/reports/知识库重构-校验记录.md",
+      "line": 39
+    },
+    {
+      "path": "clear/reports/知识库重构-校验记录.md",
+      "line": 41
+    },
+    {
+      "path": "clear/reports/知识库重构-校验记录.md",
+      "line": 183
+    },
+    {
+      "path": "clear/reports/知识库重构-校验记录.md",
+      "line": 191
+    },
+    {
+      "path": "clear/reports/知识库重构-校验记录.md",
+      "line": 16
+    },
+    {
+      "path": "clear/knowledge/negatives/n-u-wc5gba.json",
+      "line": 9
+    }
+  ],
+  "card": "判据逐条满足(L3:在副本 /tmp/clearai-rerun-aa13… 复跑脚本 + 只读核对原件)。①5 个新文件存在且非空(收集箱.md 1857 B、项目.md 666 B、收集箱数据库.base 256 B、项目数据库.base 643 B、项目模板.md 361 B);②7 个 .base 全部 yaml.safe_load 通过,两个新的顶层键均为 views、过滤用 file.inFolder/file.hasTag,项目库含 进行中/待处理/已完成 三视图;③两主页 up 均指 [[home]],home.md 有 [!收集箱]/[!项目] 两处 callout;④对执行者自存的 /tmp/home.orig diff 为纯追加 20a21,29、删除 0 行(基线只能追到这份自存副本);⑤AGENTS.md 权限表含 收集箱/、项目/,模板对照表含 项目模板,§八 含 status/ 与 type/ 两命名空间,§十 含「消化收集箱」与触发口令;⑥我在副本复跑 clear/models/base_filter_check.py,得字面 128/未解析 19(code 11+template_placeholder 6+input_content 2=19)、渲染 110/8、dangling=0,与落盘 out.json 除 generated_at 外逐字段相同、与报告 §八 一致。既有笔记未被本次改动(10:05 那批 8 个主页早于交付窗口)。残留:报告 §一 四处记账数过期、.obsidian/ 内未登记写入,均不动摇上述判据。",
+  "created_at": 1791866832663,
+  "evaluator": "independent"
+}

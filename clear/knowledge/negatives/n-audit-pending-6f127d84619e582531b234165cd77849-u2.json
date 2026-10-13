@@ -1,0 +1,31 @@
+{
+  "id": "n-audit-pending-6f127d84619e582531b234165cd77849-u2",
+  "kind": "unresolved",
+  "status": "unresolved",
+  "statement": ".obsidian/ 在交付窗口内另有未登记写入:plugins/realclaudian/main.js 11:01:55、plugins/obsidian-local-rest-api/* 11:02、workspace.json 12:41:34、fast-note-sync/*.json 12:25–12:43;报告 §一 只列 community-plugins.json 一行",
+  "touches": [],
+  "evidence": [],
+  "about": [
+    "inbox",
+    "project",
+    "status_tag"
+  ],
+  "scope": {
+    "conditions": {
+      "既有笔记": "不动",
+      "库": "/home/esdream/文档/school",
+      "导航层": "保持不变",
+      "触发方式": "会话触发"
+    },
+    "ranges": {}
+  },
+  "source": {
+    "session": "session-cc12e3d6-86e1-49c9-bb23-59bd3ca814e3",
+    "goal": "g-mv62a6fjugxy",
+    "anomaly": "audit:pending:6f127d84619e582531b234165cd77849#u2",
+    "by": "evaluator"
+  },
+  "review": null,
+  "at": 1791866832702,
+  "updated": 1791866832702
+}
