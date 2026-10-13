@@ -1,7 +1,7 @@
 {
   "id": "n-audit-pending-557a104f77f0ec0ac342077d9bc2c960-u1",
   "kind": "unresolved",
-  "status": "unresolved",
+  "status": "explained",
   "statement": "clear/reports/知识库重构-校验记录.md:5 称「既有笔记一个字节未改」，但 8 个主页（资源/资源.md、资源/课程/课程.md、资源/软件工具/软件工具.md、资源/图书/图书.md、资源/网页工具/网页工具.md、笔记/笔记.md、笔记/软件笔记/软件笔记.md、模板/主页模板.md）的 mtime 均为 2026-10-13 10:05:37，早于本次首个新文件（10:29）；AGENTS.md:89 记有「全库已于 2026-10-13 统一」callout 写法，但报告 §一 与两份计划（clear/goals/plans/p-mv62bzdxi6mr.md:8）均未登记这批改动",
   "touches": [],
   "evidence": [],
@@ -19,6 +19,11 @@
     },
     "ranges": {}
   },
+  "resolution": {
+    "outcome": "explained",
+    "reason": "属实，是措辞过宽而非事实错误。报告第 5 行已改为「本次交付只做新增——本次交付没有改动任何既有笔记（`home.md` 只加行）」，并加注列出更早一次（本次交付之前、经用户选定）callout 写法统一改动的 8 个主页共 12 行，说明不在本次交付范围内。「既有笔记一个字节未改」在时间上不成立，故限定为「本次交付」。",
+    "by": null
+  },
   "source": {
     "session": "session-cc12e3d6-86e1-49c9-bb23-59bd3ca814e3",
     "goal": "g-mv62a6fjugxy",
@@ -27,5 +32,5 @@
   },
   "review": null,
   "at": 1791860110763,
-  "updated": 1791860110763
+  "updated": 1791860292676
 }
