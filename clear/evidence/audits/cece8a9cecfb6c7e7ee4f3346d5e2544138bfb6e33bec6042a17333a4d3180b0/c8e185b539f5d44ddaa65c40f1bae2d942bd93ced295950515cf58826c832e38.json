@@ -1,0 +1,98 @@
+{
+  "schema_version": "clearai.audit.v2",
+  "kind": "evidence_audit",
+  "step_id": "t3",
+  "auditor_run_id": "8a52354d-4ae4-49c0-9168-578fcd45a03e",
+  "rechecks": [],
+  "reuse": [],
+  "holds": "yes",
+  "results": [
+    {
+      "hypothesis": "h-92w9e1",
+      "verdict": "support",
+      "basis": "推翻条件未触发。asar 字符 3040189（＝字节 3045099）处 not 组 tQ.prototype.test 为 for(...if(filters[i].test)return false)return true，即「任一子条件成立即整体为假」，界面文案 labelNoneOfTheFollowing。副本复跑 数据库/收集箱数据库.base:6-9 = and[inFolder(\"收集箱\"), not[hasTag(\"主页\"), hasTag(\"status/已归档\")]] 命中仅那份未改 frontmatter 的剪藏，tags: 主页 的 收集箱/收集箱.md 不入选；探针另建无 frontmatter 碎片（入选）与 status/已归档 碎片（被排除），仿真复制了两种分支，无主页或已归档碎片残留。"
+    }
+  ],
+  "anomalies": [
+    {
+      "what": "报告 §五:95-100 记交付时刻快照 41 个 .md／字面 123/18、渲染 103/7，与 §八:150-156 当次 42 个／122/19、104/8 并存。按现文件构成反推：当次读数减去交付后新增的 Clippings 剪藏（自带 1 条链接）应得 121 而非 123，差额只能落在交付后被改写过的两份文件（收集箱/收集箱.md mtime 11:01、AGENTS.md 11:02），报告未登记该差额来源，其解释只覆盖了未解析 18→19。",
+      "matters": "no"
+    },
+    {
+      "what": "报告记账数落后于实际交付物：§一:25 记 clear/models/base_filter_check.out.json 为 12070 B（实际 12566 B）、收集箱/收集箱.md 为 536 B（实际 1856 B）；§二:42 记「48 个 .md/.base 一律 664」现为 49 个（权限复核仍全 664）。报告未登记这几处更新。",
+      "matters": "no"
+    },
+    {
+      "what": "报告 §三.1:66-68 把 file.hasTag 方向「订正」为「查询以文件标签为前缀」(hasTag(\"status/进行中\") 命中只打 status 的文件)，与 asar 调用点相反：/opt/Obsidian/resources/obsidian.asar 字符 2933358 处 hasTag.operate 为 s.tagMatches(u)，s 取自 e.getTags()（同文件字符 2902872 的 getTags 从 metadataCache 读 this.file 的标签），u 为查询标签；tagMatches 内 n=this.lowerTag、i=参数.lowerTag、n.startsWith(i)，实为「文件标签以查询标签为前缀」。本库过滤式全用叶子标签、脚本两方向 direction_agrees 全 true，故不影响命中与数字。",
+      "matters": "no"
+    },
+    {
+      "what": "未解释项 u-wc5gba 的处置理由按「修它需要改动 Clippings/ 下的文件」论证只读（clear/knowledge/negatives/n-u-wc5gba.json 的 evidence 也仍指 Clippings/超详细版…），但该剪藏已在本次交付中移入 收集箱/（clear/reports/知识库重构-校验记录.md:121）。结论仍可由 §二/§十一「碎片原件不删不改」与用户裁定（报告:120，m00475）支撑，属理由引错目录。",
+      "matters": "no"
+    }
+  ],
+  "lessons": [],
+  "basis": "交付成立：4 条已登记判据逐条满足并复现。①报告存在非空（21614 B，sha256 be21d205…）。②报告 §八「判据 6 的最终口径」同时出现三项要素——dangling=0（:156）、三桶逐条登记（:160-164）、三桶合计 11+6+2=19＝当次未解析总数（:165，明写等于脚本字段 unresolved_literal），并标注当次扫描 generated_at=2026-10-13T11:34:57+08:00（:150，与 out.json:2 一致）。③在 /tmp 副本复跑产物自带脚本（python3 clear/models/base_filter_check.py，退出码 0），读数与 out.json 逐项一致：字面 122/19、渲染 104/8、by_bucket{code 11, template_placeholder 6, input_content 2} 合计 19＝unresolved_literal，各视图命中亦逐一相同。out.json 未显式写 dangling 字段，我另做探针：往副本注入一条正文真悬空链接后 by_bucket 立刻多出 \"dangling\":1，说明该键缺席即 0，且 19 条 unresolved_detail 无一条 bucket=dangling。④「待消化」命中恰为那份未改 frontmatter 的剪藏；探针再加「无 frontmatter 碎片」入选、「status/已归档」碎片与带主页标签的 收集箱/收集箱.md 均不入选。h-92w9e1 的推翻条件未触发：asar 里 not 组 test() 为「子条件任一为真即 false」，且实测无主页／已归档残留在命中里。注意一条不影响判据的错处：报告 §三.1 把 file.hasTag 方向写成「查询以文件标签为前缀」，与 asar 调用点相反（见 anomalies），因本库过滤式全用叶子标签，对命中与全部数字无影响。",
+  "shortfalls": [],
+  "refs": [
+    {
+      "path": "clear/reports/知识库重构-校验记录.md",
+      "line": 150
+    },
+    {
+      "path": "clear/reports/知识库重构-校验记录.md",
+      "line": 156
+    },
+    {
+      "path": "clear/reports/知识库重构-校验记录.md",
+      "line": 165
+    },
+    {
+      "path": "clear/reports/知识库重构-校验记录.md",
+      "line": 162
+    },
+    {
+      "path": "clear/reports/知识库重构-校验记录.md",
+      "line": 95
+    },
+    {
+      "path": "clear/reports/知识库重构-校验记录.md",
+      "line": 25
+    },
+    {
+      "path": "clear/reports/知识库重构-校验记录.md",
+      "line": 66
+    },
+    {
+      "path": "clear/models/base_filter_check.out.json",
+      "line": 19
+    },
+    {
+      "path": "clear/models/base_filter_check.out.json",
+      "line": 21
+    },
+    {
+      "path": "clear/models/base_filter_check.out.json",
+      "line": 275
+    },
+    {
+      "path": "clear/models/base_filter_check.py",
+      "line": 111
+    },
+    {
+      "path": "数据库/收集箱数据库.base",
+      "line": 6
+    },
+    {
+      "path": "/opt/Obsidian/resources/obsidian.asar",
+      "line": 3045099
+    },
+    {
+      "path": "/opt/Obsidian/resources/obsidian.asar",
+      "line": 2933358
+    }
+  ],
+  "card": "交付成立：4 条已登记判据逐条满足并复现。①报告存在非空（21614 B，sha256 be21d205…）。②报告 §八「判据 6 的最终口径」同时出现三项要素——dangling=0（:156）、三桶逐条登记（:160-164）、三桶合计 11+6+2=19＝当次未解析总数（:165，明写等于脚本字段 unresolved_literal），并标注当次扫描 generated_at=2026-10-13T11:34:57+08:00（:150，与 out.json:2 一致）。③在 /tmp 副本复跑产物自带脚本（python3 clear/models/base_filter_check.py，退出码 0），读数与 out.json 逐项一致：字面 122/19、渲染 104/8、by_bucket{code 11, template_placeholder 6, input_content 2} 合计 19＝unresolved_literal，各视图命中亦逐一相同。out.json 未显式写 dangling 字段，我另做探针：往副本注入一条正文真悬空链接后 by_bucket 立刻多出 \"dangling\":1，说明该键缺席即 0，且 19 条 unresolved_detail 无一条 bucket=dangling。④「待消化」命中恰为那份未改 frontmatter 的剪藏；探针再加「无 frontmatter 碎片」入选、「status/已归档」碎片与带主页标签的 收集箱/收集箱.md 均不入选。h-92w9e1 的推翻条件未触发：asar 里 not 组 test() 为「子条件任一为真即 false」，且实测无主页／已归档残留在命中里。注意一条不影响判据的错处：报告 §三.1 把 file.hasTag 方向写成「查询以文件标签为前缀」，与 asar 调用点相反（见 anomalies），因本库过滤式全用叶子标签，对命中与全部数字无影响。",
+  "created_at": 1791862772561,
+  "evaluator": "independent"
+}
