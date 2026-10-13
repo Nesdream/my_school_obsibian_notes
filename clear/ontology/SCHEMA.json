@@ -1,53 +1,53 @@
 {
-  "about": "Field definitions for ontology files (laid down by the system, read-only). Naming: X.json describes node X, and its children live in the sibling X/ directory; id must equal the file name. Nested concept directories mean is_a; nested entity directories mean part-of; relations can be flat or grouped in directories (grouping only). References use ids only, so moving directories never breaks them. Writes check a single file; cross-file problems such as broken references or type mismatches are flagged on the card and only block at promotion.",
+  "about": "本体文件的字段定义(系统铺设,只读)。命名规则:X.json 描述节点 X,它的子节点放在同级的 X/ 目录里;id 必须等于文件名。概念目录嵌套 = is_a;实体目录嵌套 = 组成 / 属于;关系可以平铺,也可以分目录(只是分组)。引用一律只写 id,挪目录不断引用。写入时只查单个文件;引用断了、类型对不上等跨文件问题在卡片上提示,升格时才拦。",
   "concept": {
     "where": "clear/ontology/concepts/**/<id>.json",
     "required": {
-      "id": "slug: starts with a lowercase letter; letters, digits, underscores; ≤40; equals the file name",
-      "label": "the human-readable name",
-      "gloss": "one-sentence gloss: what it refers to; for a measure (yield, conversion …) state its definition, that is, how it is computed"
+      "id": "slug:小写字母开头,字母/数字/下划线,≤40,等于文件名",
+      "label": "给人看的名字",
+      "gloss": "一句话释义:它指什么;度量(良率、收率……)写明口径,也就是怎么算"
     },
     "optional": {
-      "kind": "category (reactor, catalyst); measure (yield, impurity; needs unit); phenomenon (drift, deactivation)",
-      "unit": "unit (required for a measure; \"1\" if dimensionless)",
-      "aliases": "array of aliases",
-      "basis": "basis: which material establishes this term",
+      "kind": "category = 类别(反应器、催化剂);measure = 度量(收率、杂质,要写 unit);phenomenon = 现象(漂移、失活)",
+      "unit": "单位(度量必填,无量纲写 \"1\")",
+      "aliases": "别名数组",
+      "basis": "依据:哪份材料让这个词成立",
       "status": "active | deprecated",
-      "replaced_by": "the id that replaces it once deprecated",
-      "note": "note"
+      "replaced_by": "废止后由哪个 id 接替",
+      "note": "备注"
     },
     "example": {
       "id": "jepa",
-      "label": "Joint-embedding predictive architecture",
+      "label": "联合嵌入预测架构",
       "aliases": [
         "JEPA"
       ],
-      "gloss": "predicts the representation of a target from context in representation space, without reconstructing pixels",
+      "gloss": "在表示空间里从上下文预测目标的表示,不还原像素",
       "basis": "LeCun 2022"
     }
   },
   "relation": {
     "where": "clear/ontology/relations/**/<id>.json",
     "required": {
-      "id": "slug, as for concepts (concepts and relations share one id space)",
-      "label": "the human-readable name",
-      "range": "what the object is: a concept id (the object is an entity of that concept), or {\"form\": \"statement\" | \"quantity\" | \"formula\" | \"code\" | \"reference\", \"unit\"?: \"...\"} (the object is a literal value)"
+      "id": "slug,同概念(概念与关系共用一个 id 空间)",
+      "label": "给人看的名字",
+      "range": "宾语是哪种东西:一个概念 id(宾语是该概念的实体),或 {\"form\": \"statement\" | \"quantity\" | \"formula\" | \"code\" | \"reference\", \"unit\"?: \"...\"}(宾语是字面值)"
     },
     "optional": {
-      "gloss": "one-sentence gloss",
-      "kind": "affects (how one quantity moves with another); defines (how a measure is computed); measures (which instrument reads which quantity); manifests_as (what a phenomenon looks like in the readings)",
-      "shape": "rough shape of an effect: increasing | decreasing | peak | threshold | coupled; expectations come from it",
-      "check": "for a measurement: how to check the reading (reference probe, standard, repeat point)",
-      "domain": "which concept the subject must be (subconcepts count)",
-      "functional": "true = single-valued: one value per subject; two different values are reported as a conflict",
-      "basis": "basis",
+      "gloss": "一句话释义",
+      "kind": "affects = 影响(一个量怎样随另一个量变);defines = 定义(一个度量怎么算);measures = 测量(哪个仪器测哪个量);manifests_as = 表现为(一个现象在读数上什么样)",
+      "shape": "影响的大致形状:increasing | decreasing | peak | threshold | coupled;预期从这里来",
+      "check": "测量关系:读数怎么核(参考探头、标样、重复点)",
+      "domain": "主语必须是哪个概念(下位概念也算)",
+      "functional": "true = 单值:同一主语只能有一个取值,两个不同取值会被报成冲突",
+      "basis": "依据",
       "status": "active | deprecated",
-      "replaced_by": "the replacing id",
-      "note": "note"
+      "replaced_by": "接替的 id",
+      "note": "备注"
     },
     "example": {
       "id": "derived_from",
-      "label": "derived from",
+      "label": "衍生自",
       "domain": "method",
       "range": "method",
       "functional": false
@@ -56,23 +56,23 @@
   "entity": {
     "where": "clear/ontology/entities/**/<id>.json",
     "required": {
-      "id": "starts with a letter or digit; letters, digits, underscores, hyphens; ≤60; equals the file name",
-      "label": "the human-readable name",
-      "type": "which concept it is an entity of (concept id)",
-      "basis": "basis: which material lets it be identified",
-      "provenance": "source {\"kind\": \"url\" | \"named\" | \"backref\", \"ref\": \"link / paper name / file in the workspace\"}"
+      "id": "字母或数字开头,字母/数字/下划线/短横,≤60,等于文件名",
+      "label": "给人看的名字",
+      "type": "它是哪个概念的实体(概念 id)",
+      "basis": "依据:哪份材料让它可以被指认",
+      "provenance": "出处 {\"kind\": \"url\" | \"named\" | \"backref\", \"ref\": \"链接 / 文献名 / 工作区里的文件\"}"
     },
     "optional": {
-      "aliases": "array of aliases",
-      "history": "dated history: [{\"at\": \"YYYY-MM-DD\", \"what\": \"calibrated / replaced / drift found\", \"evidence\"?: {\"kind\", \"ref\"}}]",
-      "relations": "its outgoing relations, each with a source: {\"predicate\": relation id, \"object\": another entity id} or {\"predicate\": relation id, \"value\": literal, \"unit\"?: unit}; both need \"evidence\": {\"kind\", \"ref\"}",
-      "note": "note"
+      "aliases": "别名数组",
+      "history": "带日期的经历:[{\"at\": \"YYYY-MM-DD\", \"what\": \"校准 / 更换 / 发现漂移\", \"evidence\"?: {\"kind\", \"ref\"}}]",
+      "relations": "它对外的关系,每条一个出处:{\"predicate\": 关系 id, \"object\": 另一个实体的 id} 或 {\"predicate\": 关系 id, \"value\": 字面值, \"unit\"?: 单位};两种都要带 \"evidence\": {\"kind\", \"ref\"}",
+      "note": "备注"
     },
     "example": {
       "id": "v_jepa_2_ac",
       "label": "V-JEPA 2-AC",
       "type": "world_model",
-      "basis": "action-conditioned V-JEPA 2",
+      "basis": "动作条件的 V-JEPA 2",
       "provenance": {
         "kind": "named",
         "ref": "sources/vjepa2.md"
@@ -83,7 +83,7 @@
           "object": "v_jepa_2",
           "evidence": {
             "kind": "named",
-            "ref": "V-JEPA 2 paper"
+            "ref": "V-JEPA 2 论文"
           }
         },
         {
@@ -91,7 +91,7 @@
           "value": 2025,
           "evidence": {
             "kind": "named",
-            "ref": "V-JEPA 2 paper"
+            "ref": "V-JEPA 2 论文"
           }
         }
       ]
