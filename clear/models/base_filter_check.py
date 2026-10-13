@@ -156,8 +156,10 @@ def norm(tag):
 def tag_matches(query, file_tag, direction):
     """两种施受方向都实现，因为 asar 里那行代码的方向容易被读反。
 
-    direction='query_prefix'：查询以文件标签为前缀（asar 里 n.startsWith(i) 的字面方向）
-    direction='file_prefix' ：文件标签以查询为前缀（「查父标签命中所有子标签」的直觉方向）
+    direction='file_prefix' ：文件标签以查询为前缀 —— **这才是 asar 的真实方向**。
+        调用点（字节 2938182）是 s.tagMatches(u)：s 取自 e.getTags()（被查文件的标签），
+        u 是查询值，所以 tagMatches 里的 this 是文件标签。表现为 hasTag("status") 命中 status 与 status/进行中。
+    direction='query_prefix'：查询以文件标签为前缀 —— 我一度读反过，保留只为对照 direction_agrees。
     本库的过滤式一律写整条叶子标签（status/进行中、主页、status/已归档），两者等价。
     """
     q, f = norm(query), norm(file_tag)
