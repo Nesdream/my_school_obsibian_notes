@@ -1,8 +1,8 @@
 {
-  "generated_at": "2026-10-13T11:01:55+08:00",
+  "generated_at": "2026-10-13T12:47:37+08:00",
   "scope": {
     "vault_root": ".",
-    "files_scanned": 42,
+    "files_scanned": 43,
     "skipped_dirs": [
       ".claudian",
       ".git",
@@ -14,8 +14,8 @@
     "note": "clear/ 是 AI 自己的运行目录，其内的 [[…]] 示例不计入本库链接统计"
   },
   "wikilinks": {
-    "total_literal": 122,
-    "total_rendered": 104,
+    "total_literal": 128,
+    "total_rendered": 110,
     "unresolved_literal": 19,
     "unresolved_rendered": 8,
     "by_bucket": {
@@ -51,7 +51,7 @@
     "unresolved_detail": [
       {
         "file": "AGENTS.md",
-        "line": 44,
+        "line": 46,
         "raw": "[[链接]]",
         "target": "链接",
         "where": "inline_code",
@@ -60,7 +60,7 @@
       },
       {
         "file": "AGENTS.md",
-        "line": 85,
+        "line": 87,
         "raw": "[[笔记标题]]",
         "target": "笔记标题",
         "where": "inline_code",
@@ -69,7 +69,7 @@
       },
       {
         "file": "AGENTS.md",
-        "line": 91,
+        "line": 93,
         "raw": "[[...]]",
         "target": "...",
         "where": "inline_code",
@@ -78,7 +78,7 @@
       },
       {
         "file": "AGENTS.md",
-        "line": 91,
+        "line": 93,
         "raw": "[[笔记标题]]",
         "target": "笔记标题",
         "where": "inline_code",
@@ -87,7 +87,7 @@
       },
       {
         "file": "AGENTS.md",
-        "line": 107,
+        "line": 109,
         "raw": "![[…base]]",
         "target": "…base",
         "where": "inline_code",
@@ -96,7 +96,7 @@
       },
       {
         "file": "AGENTS.md",
-        "line": 110,
+        "line": 112,
         "raw": "![[xx数据库.base#视图名]]",
         "target": "xx数据库.base",
         "where": "inline_code",
@@ -105,7 +105,7 @@
       },
       {
         "file": "AGENTS.md",
-        "line": 119,
+        "line": 121,
         "raw": "[[上级主页]]",
         "target": "上级主页",
         "where": "inline_code",
@@ -114,7 +114,7 @@
       },
       {
         "file": "AGENTS.md",
-        "line": 119,
+        "line": 121,
         "raw": "[[条目一]]",
         "target": "条目一",
         "where": "inline_code",
@@ -123,7 +123,7 @@
       },
       {
         "file": "AGENTS.md",
-        "line": 119,
+        "line": 121,
         "raw": "[[对应数据库.base]]",
         "target": "对应数据库.base",
         "where": "inline_code",
@@ -461,5 +461,47 @@
         }
       ]
     }
-  ]
+  ],
+  "artifacts": {
+    "home.md": {
+      "bytes": 368,
+      "lines": 30
+    },
+    "AGENTS.md": {
+      "bytes": 18569,
+      "lines": 214
+    },
+    "知识库工作流.md": {
+      "bytes": 2471,
+      "lines": 67
+    },
+    "收集箱/收集箱.md": {
+      "bytes": 1857,
+      "lines": 30
+    },
+    "项目/项目.md": {
+      "bytes": 666,
+      "lines": 30
+    },
+    "数据库/收集箱数据库.base": {
+      "bytes": 256,
+      "lines": 14
+    },
+    "数据库/项目数据库.base": {
+      "bytes": 643,
+      "lines": 35
+    },
+    "模板/项目模板.md": {
+      "bytes": 361,
+      "lines": 36
+    },
+    "clear/models/base_filter_check.py": {
+      "bytes": 12049,
+      "lines": 295
+    },
+    "clear/reports/知识库重构-校验记录.md": {
+      "bytes": 26887,
+      "lines": 236
+    }
+  }
 }
