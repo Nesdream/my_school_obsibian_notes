@@ -1,8 +1,8 @@
 {
-  "generated_at": "2026-10-13T10:49:31+08:00",
+  "generated_at": "2026-10-13T11:01:55+08:00",
   "scope": {
     "vault_root": ".",
-    "files_scanned": 41,
+    "files_scanned": 42,
     "skipped_dirs": [
       ".claudian",
       ".git",
@@ -14,23 +14,24 @@
     "note": "clear/ 是 AI 自己的运行目录，其内的 [[…]] 示例不计入本库链接统计"
   },
   "wikilinks": {
-    "total_literal": 123,
-    "total_rendered": 103,
-    "unresolved_literal": 18,
-    "unresolved_rendered": 7,
+    "total_literal": 122,
+    "total_rendered": 104,
+    "unresolved_literal": 19,
+    "unresolved_rendered": 8,
     "by_bucket": {
       "code": 11,
       "template_placeholder": 6,
-      "input_content": 1
+      "input_content": 2
     },
     "by_bucket_rendered": {
       "template_placeholder": 6,
-      "input_content": 1
+      "input_content": 2
     },
     "by_file": {
       "AGENTS.md": 9,
       "模板/主页模板.md": 5,
       "收集箱/超详细版：Obsidian + Claude Code 搭建个人知识库实践指南.md": 3,
+      "Clippings/AI＋Obsidian保姆级教程：教你从0搭建自己的AI个人知识库.md": 1,
       "模板/原子笔记模板.md": 1
     },
     "by_bucket_file": {
@@ -39,6 +40,7 @@
         "收集箱/超详细版：Obsidian + Claude Code 搭建个人知识库实践指南.md": 2
       },
       "input_content": {
+        "Clippings/AI＋Obsidian保姆级教程：教你从0搭建自己的AI个人知识库.md": 1,
         "收集箱/超详细版：Obsidian + Claude Code 搭建个人知识库实践指南.md": 1
       },
       "template_placeholder": {
@@ -127,6 +129,15 @@
         "where": "inline_code",
         "bucket": "code",
         "rendered": false
+      },
+      {
+        "file": "Clippings/AI＋Obsidian保姆级教程：教你从0搭建自己的AI个人知识库.md",
+        "line": 5,
+        "raw": "[[直男山禾]]",
+        "target": "直男山禾",
+        "where": "text",
+        "bucket": "input_content",
+        "rendered": true
       },
       {
         "file": "收集箱/超详细版：Obsidian + Claude Code 搭建个人知识库实践指南.md",
