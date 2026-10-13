@@ -1,0 +1,163 @@
+{
+  "schema_version": "clearai.audit.v2",
+  "kind": "goal_audit",
+  "step_id": "goal:g-mv62a6fjugxy",
+  "auditor_run_id": "694eb93e-40fb-48f8-aca3-a33f80d66950",
+  "rechecks": [],
+  "reuse": [],
+  "holds": "no",
+  "results": [
+    {
+      "hypothesis": "h-dlq9i8",
+      "verdict": "support",
+      "basis": "复跑脚本项目数据库.base 三视图各命中 0（互斥、并集为空集），三视图各自带 inFolder+hasTag 过滤；查阅 /opt/Obsidian/resources/obsidian.asar 字节 2938182 调用点 s.tagMatches(u) 确认 hasTag 为「文件标签以查询标签为前缀」，叶子标签精确匹配成立；未触推翻条件"
+    },
+    {
+      "hypothesis": "h-92w9e1",
+      "verdict": "support",
+      "basis": "obsidian.asar 字节 3045099 处 t.prototype.test 为 for(...){if(n[t].test(e))return!1} return!0 =「以下任一成立即不显示」，与脚本 ev() 的 not 实现一致；复跑「待消化」视图恰命中 1 篇未改 frontmatter 的剪藏，主页 收集箱/收集箱.md 与无已归档碎片均不入选；未触推翻条件"
+    }
+  ],
+  "anomalies": [
+    {
+      "what": "clear/reports/知识库重构-校验记录.md 权限 600，是全库唯一非 664 的 .md（同类产物 clear/goals/g-mv62a6fjugxy.md、clear/models/base_filter_check.py 均 664）；报告 §二:46 刚校验过「权限一致」，未登记该例外",
+      "matters": "no"
+    },
+    {
+      "what": "产出侧记账未同步：out.json（12:18，total_literal 122）与报告 §八:178（122）落后于现树（复跑 128/110），报告 §八:113 自己承认「应得 125，实测 122」的差额；差额同时含 AGENTS.md 12:26 再改（212 行、AGENTS.md:45-120 的 11 条行内代码）而报告仍记 213 行 / 9 条",
+      "matters": "yes"
+    },
+    {
+      "what": "报告 §二:46 记「库内容 49 个 .md/.base 一律 664」，用报告自带命令复跑为 50 个（含 Clippings/AI＋Obsidian保姆级教程…md，交付后 10:51 落）、权限仍全 664；另 clear/knowledge/negatives/n-u-hk8q67.json 的 resolution 仍写「全库 48 个 .md/.base 权限全部 664」，两处旧计数并存且未登记",
+      "matters": "no"
+    },
+    {
+      "what": "clear/knowledge/negatives/n-u-wc5gba.json 的 evidence 仍指 Clippings/超详细版…（该文件已在本次交付中移入 收集箱/，Clippings/ 现仅剩那份 10:51 新剪藏），报告 §五:141-145 与 §八:188 已用现路径；系统所有目录写不进，故过时路径留在 knowledge 条目里",
+      "matters": "no"
+    }
+  ],
+  "lessons": [
+    {
+      "lesson": "L1",
+      "verdict": "support",
+      "basis": "凭空解不了框架源码；报告 §八:168 自述四次候选 key 被拒皆因 id 少 audit:pending: 前缀，与 clear/goals/g-mv62a6fjugxy.md 判据修订留痕一致"
+    },
+    {
+      "lesson": "L2",
+      "verdict": "support",
+      "basis": "clear/goals/g-mv62a6fjugxy.md 记四次同一报错后才读到比较条件；本次评估中我在 out.json 与复跑读数 122/128 矛盾时也正是回头去读生成逻辑（脚本:230-247）才定位到是报告与 out.json 过期"
+    }
+  ],
+  "basis": "交付实体齐备，但判据 6 的「当次为准」对不上：我用产物自带脚本在 /tmp 副本复跑，得全库字面 128 条 / 未解析 19 / 渲染 110 / 未解析 8，而报告 §八:178-179 记的是 122 / 19 / 104 / 8，脚本自身输出 base_filter_check.out.json（generated_at 12:18:17）也是 122，且其 by_bucket_file 把 code 桶记为 AGENTS.md 9 条、报告 §八:186 照此登记，而现文件里 AGENTS.md 确有 11 条行内代码链接、行号整体下移一行——即 AGENTS.md 在 12:26 被再改后报告与 out.json 未同步；全库扫描 128 也解释不了报告 §八:113 自己写的「应得 125，实测 122」。三桶合计 19＝当次未解析总数、dangling=0 这两格成立，故判据 6 只部分满足。判据 1–5 逐条成立；两条判断都未触及推翻条件。整体是记账过期而非结构失效。",
+  "shortfalls": [
+    {
+      "criterion": "6) 链接体检以 clear/models/base_filter_check.py 当次扫描为准",
+      "what": "在 /tmp 副本内复跑产物自带脚本得：字面 128 / 未解析 19 / 渲染 110 / 未解析 8（43 个 .md）；报告 §八:178-179 记的是 122 / 19 / 104 / 8，产物自带输出 clear/models/base_filter_check.out.json（generated_at 2026-10-13T12:18:17）也是 total_literal 122、total_rendered 104",
+      "missing": "把报告与 out.json 重新跑一次并与现扫描 128/110 对齐，或登记本轮漂移（AGENTS.md 12:26 再改）"
+    },
+    {
+      "criterion": "6) 其余未解析项必须逐条登记并归类（code＝规则示例中写在代码里的字面量…）",
+      "what": "现文件 AGENTS.md 有 11 条行内代码未解析链接（AGENTS.md:45、86、92×2、108、111、120×3；脚本复跑 code 桶 AGENTS.md=11）；报告 §八:186 与 §五:130 只登记 9 条且行号为 :44、:85、:91、:107、:110、:119，整体下移一行",
+      "missing": "逐条登记改成当前扫描的 11 条与现行号，或说明这两条新增示例的归属"
+    },
+    {
+      "criterion": "5) …标签规范含 status/ 与 type/ 命名空间、工作流含「消化收集箱」步骤与触发口令（报告须与实物一致）",
+      "what": "报告 §一:22 记 AGENTS.md「213 行 / 18387 B」，实际 212 行 / 18387 B（字节对、行数不符）；§八:186 的 9 条行内代码行号与现文件对不上",
+      "missing": "把行数与引用行号改成与现文件一致"
+    },
+    {
+      "criterion": "2) 两个 .base 的 YAML 可被解析，且与库内已有 5 个 .base 同构（报告须与产物一致）",
+      "what": "报告 §二:36 称「收集箱 1 个视图、项目 3 个视图，过滤式均为 and: [file.inFolder(...), file.hasTag(...)]」；实际 数据库/收集箱数据库.base:7-9 的第二项是 not: 组，不是 file.hasTag",
+      "missing": "把同构描述改为「and 内含 inFolder 加 hasTag/not 组」，否则该句与产物不符"
+    }
+  ],
+  "refs": [
+    {
+      "path": "clear/reports/知识库重构-校验记录.md",
+      "line": 178
+    },
+    {
+      "path": "clear/reports/知识库重构-校验记录.md",
+      "line": 179
+    },
+    {
+      "path": "clear/reports/知识库重构-校验记录.md",
+      "line": 186
+    },
+    {
+      "path": "clear/reports/知识库重构-校验记录.md",
+      "line": 40
+    },
+    {
+      "path": "clear/reports/知识库重构-校验记录.md",
+      "line": 46
+    },
+    {
+      "path": "clear/models/base_filter_check.out.json",
+      "line": 1
+    },
+    {
+      "path": "clear/models/base_filter_check.py",
+      "line": 193
+    },
+    {
+      "path": "clear/models/base_filter_check.py",
+      "line": 113
+    },
+    {
+      "path": "AGENTS.md",
+      "line": 45
+    },
+    {
+      "path": "AGENTS.md",
+      "line": 120
+    },
+    {
+      "path": "AGENTS.md",
+      "line": 212
+    },
+    {
+      "path": "home.md",
+      "line": 22
+    },
+    {
+      "path": "home.md",
+      "line": 25
+    },
+    {
+      "path": "home.md",
+      "line": 27
+    },
+    {
+      "path": "收集箱/收集箱.md",
+      "line": 3
+    },
+    {
+      "path": "项目/项目.md",
+      "line": 3
+    },
+    {
+      "path": "数据库/收集箱数据库.base",
+      "line": 7
+    },
+    {
+      "path": "数据库/项目数据库.base",
+      "line": 25
+    },
+    {
+      "path": "模板/项目模板.md",
+      "line": 6
+    },
+    {
+      "path": "/opt/Obsidian/resources/obsidian.asar",
+      "line": 3045099
+    },
+    {
+      "path": "/opt/Obsidian/resources/obsidian.asar",
+      "line": 2938182
+    }
+  ],
+  "card": "交付实体齐备，但判据 6 的「当次为准」对不上：我用产物自带脚本在 /tmp 副本复跑，得全库字面 128 条 / 未解析 19 / 渲染 110 / 未解析 8，而报告 §八:178-179 记的是 122 / 19 / 104 / 8，脚本自身输出 base_filter_check.out.json（generated_at 12:18:17）也是 122，且其 by_bucket_file 把 code 桶记为 AGENTS.md 9 条、报告 §八:186 照此登记，而现文件里 AGENTS.md 确有 11 条行内代码链接、行号整体下移一行——即 AGENTS.md 在 12:26 被再改后报告与 out.json 未同步；全库扫描 128 也解释不了报告 §八:113 自己写的「应得 125，实测 122」。三桶合计 19＝当次未解析总数、dangling=0 这两格成立，故判据 6 只部分满足。判据 1–5 逐条成立；两条判断都未触及推翻条件。整体是记账过期而非结构失效。",
+  "created_at": 1791866165785,
+  "evaluator": "independent"
+}

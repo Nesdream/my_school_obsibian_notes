@@ -1,0 +1,31 @@
+{
+  "id": "n-audit-pending-c3fb5415e9e18f555019ca494354ccd6-u2",
+  "kind": "unresolved",
+  "status": "unresolved",
+  "statement": "产出侧记账未同步：out.json（12:18，total_literal 122）与报告 §八:178（122）落后于现树（复跑 128/110），报告 §八:113 自己承认「应得 125，实测 122」的差额；差额同时含 AGENTS.md 12:26 再改（212 行、AGENTS.md:45-120 的 11 条行内代码）而报告仍记 213 行 / 9 条",
+  "touches": [],
+  "evidence": [],
+  "about": [
+    "inbox",
+    "project",
+    "status_tag"
+  ],
+  "scope": {
+    "conditions": {
+      "既有笔记": "不动",
+      "库": "/home/esdream/文档/school",
+      "导航层": "保持不变",
+      "触发方式": "会话触发"
+    },
+    "ranges": {}
+  },
+  "source": {
+    "session": "session-cc12e3d6-86e1-49c9-bb23-59bd3ca814e3",
+    "goal": "g-mv62a6fjugxy",
+    "anomaly": "audit:pending:c3fb5415e9e18f555019ca494354ccd6#u2",
+    "by": "evaluator"
+  },
+  "review": null,
+  "at": 1791866165815,
+  "updated": 1791866165815
+}
