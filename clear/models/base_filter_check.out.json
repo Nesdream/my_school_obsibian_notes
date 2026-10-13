@@ -1,0 +1,454 @@
+{
+  "generated_at": "2026-10-13T10:49:31+08:00",
+  "scope": {
+    "vault_root": ".",
+    "files_scanned": 41,
+    "skipped_dirs": [
+      ".claudian",
+      ".git",
+      ".obsidian",
+      ".stfolder",
+      ".trash",
+      "clear"
+    ],
+    "note": "clear/ 是 AI 自己的运行目录，其内的 [[…]] 示例不计入本库链接统计"
+  },
+  "wikilinks": {
+    "total_literal": 123,
+    "total_rendered": 103,
+    "unresolved_literal": 18,
+    "unresolved_rendered": 7,
+    "by_bucket": {
+      "code": 11,
+      "template_placeholder": 6,
+      "input_content": 1
+    },
+    "by_bucket_rendered": {
+      "template_placeholder": 6,
+      "input_content": 1
+    },
+    "by_file": {
+      "AGENTS.md": 9,
+      "模板/主页模板.md": 5,
+      "收集箱/超详细版：Obsidian + Claude Code 搭建个人知识库实践指南.md": 3,
+      "模板/原子笔记模板.md": 1
+    },
+    "by_bucket_file": {
+      "code": {
+        "AGENTS.md": 9,
+        "收集箱/超详细版：Obsidian + Claude Code 搭建个人知识库实践指南.md": 2
+      },
+      "input_content": {
+        "收集箱/超详细版：Obsidian + Claude Code 搭建个人知识库实践指南.md": 1
+      },
+      "template_placeholder": {
+        "模板/主页模板.md": 5,
+        "模板/原子笔记模板.md": 1
+      }
+    },
+    "unresolved_detail": [
+      {
+        "file": "AGENTS.md",
+        "line": 44,
+        "raw": "[[链接]]",
+        "target": "链接",
+        "where": "inline_code",
+        "bucket": "code",
+        "rendered": false
+      },
+      {
+        "file": "AGENTS.md",
+        "line": 85,
+        "raw": "[[笔记标题]]",
+        "target": "笔记标题",
+        "where": "inline_code",
+        "bucket": "code",
+        "rendered": false
+      },
+      {
+        "file": "AGENTS.md",
+        "line": 91,
+        "raw": "[[...]]",
+        "target": "...",
+        "where": "inline_code",
+        "bucket": "code",
+        "rendered": false
+      },
+      {
+        "file": "AGENTS.md",
+        "line": 91,
+        "raw": "[[笔记标题]]",
+        "target": "笔记标题",
+        "where": "inline_code",
+        "bucket": "code",
+        "rendered": false
+      },
+      {
+        "file": "AGENTS.md",
+        "line": 107,
+        "raw": "![[…base]]",
+        "target": "…base",
+        "where": "inline_code",
+        "bucket": "code",
+        "rendered": false
+      },
+      {
+        "file": "AGENTS.md",
+        "line": 110,
+        "raw": "![[xx数据库.base#视图名]]",
+        "target": "xx数据库.base",
+        "where": "inline_code",
+        "bucket": "code",
+        "rendered": false
+      },
+      {
+        "file": "AGENTS.md",
+        "line": 119,
+        "raw": "[[上级主页]]",
+        "target": "上级主页",
+        "where": "inline_code",
+        "bucket": "code",
+        "rendered": false
+      },
+      {
+        "file": "AGENTS.md",
+        "line": 119,
+        "raw": "[[条目一]]",
+        "target": "条目一",
+        "where": "inline_code",
+        "bucket": "code",
+        "rendered": false
+      },
+      {
+        "file": "AGENTS.md",
+        "line": 119,
+        "raw": "[[对应数据库.base]]",
+        "target": "对应数据库.base",
+        "where": "inline_code",
+        "bucket": "code",
+        "rendered": false
+      },
+      {
+        "file": "收集箱/超详细版：Obsidian + Claude Code 搭建个人知识库实践指南.md",
+        "line": 5,
+        "raw": "[[九章智算云]]",
+        "target": "九章智算云",
+        "where": "text",
+        "bucket": "input_content",
+        "rendered": true
+      },
+      {
+        "file": "收集箱/超详细版：Obsidian + Claude Code 搭建个人知识库实践指南.md",
+        "line": 230,
+        "raw": "[[相关笔记标题]]",
+        "target": "相关笔记标题",
+        "where": "fence",
+        "bucket": "code",
+        "rendered": false
+      },
+      {
+        "file": "收集箱/超详细版：Obsidian + Claude Code 搭建个人知识库实践指南.md",
+        "line": 256,
+        "raw": "[[准确的笔记标题]]",
+        "target": "准确的笔记标题",
+        "where": "fence",
+        "bucket": "code",
+        "rendered": false
+      },
+      {
+        "file": "模板/主页模板.md",
+        "line": 3,
+        "raw": "[[上级主页]]",
+        "target": "上级主页",
+        "where": "text",
+        "bucket": "template_placeholder",
+        "rendered": true
+      },
+      {
+        "file": "模板/主页模板.md",
+        "line": 13,
+        "raw": "[[条目一]]",
+        "target": "条目一",
+        "where": "text",
+        "bucket": "template_placeholder",
+        "rendered": true
+      },
+      {
+        "file": "模板/主页模板.md",
+        "line": 14,
+        "raw": "[[条目二]]",
+        "target": "条目二",
+        "where": "text",
+        "bucket": "template_placeholder",
+        "rendered": true
+      },
+      {
+        "file": "模板/主页模板.md",
+        "line": 17,
+        "raw": "[[对应数据库.base]]",
+        "target": "对应数据库.base",
+        "where": "text",
+        "bucket": "template_placeholder",
+        "rendered": true
+      },
+      {
+        "file": "模板/主页模板.md",
+        "line": 19,
+        "raw": "![[对应数据库.base]]",
+        "target": "对应数据库.base",
+        "where": "text",
+        "bucket": "template_placeholder",
+        "rendered": true
+      },
+      {
+        "file": "模板/原子笔记模板.md",
+        "line": 3,
+        "raw": "[[上级索引]]",
+        "target": "上级索引",
+        "where": "text",
+        "bucket": "template_placeholder",
+        "rendered": true
+      }
+    ]
+  },
+  "bases": [
+    {
+      "path": "数据库/图书数据库.base",
+      "view_count": 1,
+      "views": [
+        {
+          "name": "视图",
+          "type": "table",
+          "filter": {
+            "and": [
+              "file.inFolder(\"资源/图书\")"
+            ]
+          },
+          "hits": [
+            "资源/图书/卡片笔记写作法.md",
+            "资源/图书/图书.md"
+          ],
+          "hits_by_direction": {
+            "query_prefix": [
+              "资源/图书/卡片笔记写作法.md",
+              "资源/图书/图书.md"
+            ],
+            "file_prefix": [
+              "资源/图书/卡片笔记写作法.md",
+              "资源/图书/图书.md"
+            ]
+          },
+          "direction_agrees": true
+        }
+      ]
+    },
+    {
+      "path": "数据库/收集箱数据库.base",
+      "view_count": 1,
+      "views": [
+        {
+          "name": "待消化",
+          "type": "table",
+          "filter": {
+            "and": [
+              "file.inFolder(\"收集箱\")",
+              {
+                "not": [
+                  "file.hasTag(\"主页\")",
+                  "file.hasTag(\"status/已归档\")"
+                ]
+              }
+            ]
+          },
+          "hits": [
+            "收集箱/超详细版：Obsidian + Claude Code 搭建个人知识库实践指南.md"
+          ],
+          "hits_by_direction": {
+            "query_prefix": [
+              "收集箱/超详细版：Obsidian + Claude Code 搭建个人知识库实践指南.md"
+            ],
+            "file_prefix": [
+              "收集箱/超详细版：Obsidian + Claude Code 搭建个人知识库实践指南.md"
+            ]
+          },
+          "direction_agrees": true
+        }
+      ]
+    },
+    {
+      "path": "数据库/网页工具数据库.base",
+      "view_count": 1,
+      "views": [
+        {
+          "name": "视图",
+          "type": "table",
+          "filter": {
+            "and": [
+              "file.inFolder(\"资源/网页工具\")"
+            ]
+          },
+          "hits": [
+            "资源/网页工具/Z-Library.md",
+            "资源/网页工具/csdiy.wiki.md",
+            "资源/网页工具/网页工具.md"
+          ],
+          "hits_by_direction": {
+            "query_prefix": [
+              "资源/网页工具/Z-Library.md",
+              "资源/网页工具/csdiy.wiki.md",
+              "资源/网页工具/网页工具.md"
+            ],
+            "file_prefix": [
+              "资源/网页工具/Z-Library.md",
+              "资源/网页工具/csdiy.wiki.md",
+              "资源/网页工具/网页工具.md"
+            ]
+          },
+          "direction_agrees": true
+        }
+      ]
+    },
+    {
+      "path": "数据库/课程数据库.base",
+      "view_count": 1,
+      "views": [
+        {
+          "name": "视图",
+          "type": "table",
+          "filter": {
+            "and": [
+              "file.inFolder(\"资源/课程\")"
+            ]
+          },
+          "hits": [
+            "资源/课程/课程.md"
+          ],
+          "hits_by_direction": {
+            "query_prefix": [
+              "资源/课程/课程.md"
+            ],
+            "file_prefix": [
+              "资源/课程/课程.md"
+            ]
+          },
+          "direction_agrees": true
+        }
+      ]
+    },
+    {
+      "path": "数据库/软件工具数据库.base",
+      "view_count": 1,
+      "views": [
+        {
+          "name": "视图",
+          "type": "table",
+          "filter": {
+            "and": [
+              "file.inFolder(\"资源/软件工具\")"
+            ]
+          },
+          "hits": [
+            "资源/软件工具/Clash Verge.md",
+            "资源/软件工具/Git.md",
+            "资源/软件工具/软件工具.md"
+          ],
+          "hits_by_direction": {
+            "query_prefix": [
+              "资源/软件工具/Clash Verge.md",
+              "资源/软件工具/Git.md",
+              "资源/软件工具/软件工具.md"
+            ],
+            "file_prefix": [
+              "资源/软件工具/Clash Verge.md",
+              "资源/软件工具/Git.md",
+              "资源/软件工具/软件工具.md"
+            ]
+          },
+          "direction_agrees": true
+        }
+      ]
+    },
+    {
+      "path": "数据库/软件笔记数据库.base",
+      "view_count": 1,
+      "views": [
+        {
+          "name": "视图",
+          "type": "table",
+          "filter": {
+            "and": [
+              "file.inFolder(\"笔记/软件笔记\")",
+              "file.hasTag(\"汇总\")"
+            ]
+          },
+          "hits": [
+            "笔记/软件笔记/Git 汇总.md"
+          ],
+          "hits_by_direction": {
+            "query_prefix": [
+              "笔记/软件笔记/Git 汇总.md"
+            ],
+            "file_prefix": [
+              "笔记/软件笔记/Git 汇总.md"
+            ]
+          },
+          "direction_agrees": true
+        }
+      ]
+    },
+    {
+      "path": "数据库/项目数据库.base",
+      "view_count": 3,
+      "views": [
+        {
+          "name": "进行中",
+          "type": "table",
+          "filter": {
+            "and": [
+              "file.inFolder(\"项目\")",
+              "file.hasTag(\"status/进行中\")"
+            ]
+          },
+          "hits": [],
+          "hits_by_direction": {
+            "query_prefix": [],
+            "file_prefix": []
+          },
+          "direction_agrees": true
+        },
+        {
+          "name": "待处理",
+          "type": "table",
+          "filter": {
+            "and": [
+              "file.inFolder(\"项目\")",
+              "file.hasTag(\"status/待处理\")"
+            ]
+          },
+          "hits": [],
+          "hits_by_direction": {
+            "query_prefix": [],
+            "file_prefix": []
+          },
+          "direction_agrees": true
+        },
+        {
+          "name": "已完成",
+          "type": "table",
+          "filter": {
+            "and": [
+              "file.inFolder(\"项目\")",
+              "file.hasTag(\"status/已完成\")"
+            ]
+          },
+          "hits": [],
+          "hits_by_direction": {
+            "query_prefix": [],
+            "file_prefix": []
+          },
+          "direction_agrees": true
+        }
+      ]
+    }
+  ]
+}

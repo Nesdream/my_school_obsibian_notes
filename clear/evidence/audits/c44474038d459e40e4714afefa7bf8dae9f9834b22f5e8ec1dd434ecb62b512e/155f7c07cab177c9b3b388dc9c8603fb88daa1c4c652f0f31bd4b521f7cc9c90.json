@@ -1,0 +1,129 @@
+{
+  "schema_version": "clearai.audit.v2",
+  "kind": "evidence_audit",
+  "step_id": "t2",
+  "auditor_run_id": "3937caa7-b78c-4628-b31a-a974b020848f",
+  "rechecks": [],
+  "reuse": [],
+  "holds": "yes",
+  "results": [
+    {
+      "hypothesis": "h-92w9e1",
+      "verdict": "support",
+      "basis": "对照推翻条件「not 组语义不是『任一成立即不显示』，导致主页或已归档碎片仍出现在待消化列表」，在副本实跑脚本并独立复算：收集箱视图（and: [inFolder(\"收集箱\"), not: [hasTag(\"主页\"), hasTag(\"status/已归档\")]]，数据库/收集箱数据库.base:3-9）命中恰好 1 个文件（未改 frontmatter 的剪藏，tags 仅 clippings）；主页 收集箱/收集箱.md（tags: 主页）未入选；给剪藏模拟加 status/已归档 而不移动文件后命中变为 0；无 frontmatter 碎片仍入选。四个用例均未触发推翻条件。"
+    }
+  ],
+  "anomalies": [
+    {
+      "what": "报告 §二 校验项 6 方法栏仍写「复算脚本（两种口径）」，与结果栏并列的「正文笔记中 1 条」旧口径已被 §五订正，但方法栏未同步写全口径；audit:pending:ee6c97166a1e5d9f12cc80fff7b590d7#u1 仍开着（clear/reports/知识库重构-校验记录.md:30、:35）",
+      "matters": "no"
+    },
+    {
+      "what": "字面口径的 18 条里 11 条被归为 code（实测构成：AGENTS.md 行内代码 9 条 + 收集箱剪藏第 230、256 行 fence 内 2 条），报告 §五 只写「代码块/行内代码 11」未给该构成明细，也未登记「AGENTS.md:44/85/91/107/110/119 的 9 条规则示例占位符」（clear/reports/知识库重构-校验记录.md:95）",
+      "matters": "no"
+    },
+    {
+      "what": "本轮独立复算得到 AGENTS.md 参与未解析共 9 条；其逐条归类（9 条全在行内代码）只能由我自己的扫描确认，脚本 out.json 的 by_bucket 未按文件给 code 明细，报告 §五 的 7 条明细也未覆盖这 9 条",
+      "matters": "no"
+    }
+  ],
+  "lessons": [],
+  "basis": "本步三项判据逐条核对成立，观测与记录一致。(1) 报告可查到「全库 wikilink 总数／未解析总数／未解析构成」三个数且与脚本输出一致：报告 §五 表给出字面 123/18（代码 11、模板占位 6、输入内容 1）、渲染口径 103/7（模板占位 6、输入内容 1）；在工作区副本实跑 clear/models/base_filter_check.py（脚本以 parents[2] 定位库根，副本须先补 clear/models/）得 123/103/18/7、by_bucket {code:11, template_placeholder:6, input_content:1}、7 条逐条明细，与报告逐字吻合，且 7 个 .base、9 个视图命中与报告 §四 一致。(2) 脚本存在、无 traceback 跑通并写出 out.json。(3) 报告 §五 记有用户对剪藏链接的裁决（m00475「保留，作为输入内容，未来会清理」）与处置，§五「项目 标签的新增理由（补记）」给出新增理由。另核实：5 个新文件均存在非空；7 个 .base 顶层键均 views、过滤式均 file.inFolder/file.hasTag，项目库含三视图；两主页 up→[[home]]；home.md diff 仅 20a21,26（0 删 6 增）；AGENTS.md §一~§十三 各一次、含权限表两新目录、模板对照表项目模板、status//type/ 命名空间、消化收集箱六步；剪藏 sha256 2f0e47…37430 字节与报告一致；48 个 .md/.base 全 664。已登记判据 6 的「悬空 0 个」按字面与渲染口径均不成立（18／7），报告 §五 自认「0 条未解析都达不到」，故按字面列入缺口；但本步任务书要求的三个数齐备可查，该失败属判据本身写死所致，并与已登记的未解释项 u1 同源。",
+  "shortfalls": [
+    {
+      "criterion": "判据 6「报告列出全部新增/修改文件，且全库 wikilink 无悬空（0 个指向不存在文件）」",
+      "what": "本步脚本实跑与独立复算：字面口径未解析 18 条、渲染口径 7 条（clear/reports/知识库重构-校验记录.md:95-96 同数）；7 条全部登记为两类例外（模板占位 6、输入内容 1），真正 dangling 为 0（clear/reports/知识库重构-校验记录.md:136）。报告 §五 自认「无论用哪个口径，『0 条未解析』都达不到」(clear/reports/知识库重构-校验记录.md:120)",
+      "missing": "判据 6 按字面不成立（0≠18／0≠7）；要满足须把判据，其中「0 个」改写为可被证伪的口径（如「真正 dangling＝0，例外已登记」），或把 6 条模板占位、1 条输入内容处理到零——后者与 AGENTS.md §七、用户 m00475 决定冲突"
+    },
+    {
+      "criterion": "判据 6 同条前半「报告列出全部新增/修改文件」（可追溯性）",
+      "what": "报告 §二 校验项 6 的方法栏仍写「复算脚本（两种口径）」，未写明扫描范围与是否含代码块，实际口径只在 §五(clear/reports/知识库重构-校验记录.md:91-98) 与 §七 出现；本轮已登记的未解释项 u1 即指此（audit:pending…#u1）",
+      "missing": "把口径（扫描 41 个 .md、排除 clear/.obsidian/.claudian、含/不含代码块）写入 §二 对应行，使 123/18 与「正文笔记中 1 条」两种口径不再并存"
+    }
+  ],
+  "refs": [
+    {
+      "path": "clear/reports/知识库重构-校验记录.md",
+      "line": 43
+    },
+    {
+      "path": "clear/reports/知识库重构-校验记录.md",
+      "line": 93
+    },
+    {
+      "path": "clear/reports/知识库重构-校验记录.md",
+      "line": 120
+    },
+    {
+      "path": "clear/reports/知识库重构-校验记录.md",
+      "line": 122
+    },
+    {
+      "path": "clear/reports/知识库重构-校验记录.md",
+      "line": 114
+    },
+    {
+      "path": "clear/reports/知识库重构-校验记录.md",
+      "line": 136
+    },
+    {
+      "path": "clear/models/base_filter_check.py",
+      "line": 24
+    },
+    {
+      "path": "clear/models/base_filter_check.py",
+      "line": 191
+    },
+    {
+      "path": "数据库/收集箱数据库.base",
+      "line": 8
+    },
+    {
+      "path": "数据库/项目数据库.base",
+      "line": 5
+    },
+    {
+      "path": "模板/项目模板.md",
+      "line": 5
+    },
+    {
+      "path": "收集箱/收集箱.md",
+      "line": 2
+    },
+    {
+      "path": "home.md",
+      "line": 22
+    },
+    {
+      "path": "AGENTS.md",
+      "line": 23
+    },
+    {
+      "path": "AGENTS.md",
+      "line": 119
+    },
+    {
+      "path": "AGENTS.md",
+      "line": 130
+    },
+    {
+      "path": "AGENTS.md",
+      "line": 157
+    },
+    {
+      "path": "clear/goals/g-mv62a6fjugxy.md",
+      "line": 6
+    },
+    {
+      "path": "clear/goals/g-mv62a6fjugxy.md",
+      "line": 14
+    },
+    {
+      "path": "clear/ontology/verification-loop.md",
+      "line": 112
+    }
+  ],
+  "card": "本步三项判据逐条核对成立，观测与记录一致。(1) 报告可查到「全库 wikilink 总数／未解析总数／未解析构成」三个数且与脚本输出一致：报告 §五 表给出字面 123/18（代码 11、模板占位 6、输入内容 1）、渲染口径 103/7（模板占位 6、输入内容 1）；在工作区副本实跑 clear/models/base_filter_check.py（脚本以 parents[2] 定位库根，副本须先补 clear/models/）得 123/103/18/7、by_bucket {code:11, template_placeholder:6, input_content:1}、7 条逐条明细，与报告逐字吻合，且 7 个 .base、9 个视图命中与报告 §四 一致。(2) 脚本存在、无 traceback 跑通并写出 out.json。(3) 报告 §五 记有用户对剪藏链接的裁决（m00475「保留，作为输入内容，未来会清理」）与处置，§五「项目 标签的新增理由（补记）」给出新增理由。另核实：5 个新文件均存在非空；7 个 .base 顶层键均 views、过滤式均 file.inFolder/file.hasTag，项目库含三视图；两主页 up→[[home]]；home.md diff 仅 20a21,26（0 删 6 增）；AGENTS.md §一~§十三 各一次、含权限表两新目录、模板对照表项目模板、status//type/ 命名空间、消化收集箱六步；剪藏 sha256 2f0e47…37430 字节与报告一致；48 个 .md/.base 全 664。已登记判据 6 的「悬空 0 个」按字面与渲染口径均不成立（18／7），报告 §五 自认「0 条未解析都达不到」，故按字面列入缺口；但本步任务书要求的三个数齐备可查，该失败属判据本身写死所致，并与已登记的未解释项 u1 同源。",
+  "created_at": 1791859743367,
+  "evaluator": "independent"
+}
