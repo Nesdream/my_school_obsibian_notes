@@ -1,0 +1,127 @@
+{
+  "schema_version": "clearai.audit.v2",
+  "kind": "goal_audit",
+  "step_id": "goal:g-mv62a6fjugxy",
+  "auditor_run_id": "20f1dc22-7774-4c0a-9845-09bff7fff7bf",
+  "rechecks": [],
+  "reuse": [],
+  "holds": "yes",
+  "results": [
+    {
+      "hypothesis": "h-dlq9i8",
+      "verdict": "support",
+      "basis": "数据库/项目数据库.base 含 3 个视图，各带 filter（file.inFolder(\"项目\") ∧ file.hasTag(\"status/进行中|待处理|已完成\")），副本复跑命中的三个集合互斥（各 0 篇，库里无项目笔记），direction_agrees 均 true；改 tags 一行不动文件即迁移，推翻条件两个分支都未被触发。"
+    },
+    {
+      "hypothesis": "h-92w9e1",
+      "verdict": "support",
+      "basis": "副本复跑「待消化」= and:[inFolder(\"收集箱\"), not:[hasTag(\"主页\"), hasTag(\"status/已归档\")]]，命中恰 1 个（收集箱/超详细版…md，frontmatter 无 主页/status），主页 收集箱/收集箱.md（tags 含 主页）与文件夹外笔记命中 0；not 组多条件确实表现为「任一成立即不显示」，推翻条件未触发。"
+    }
+  ],
+  "anomalies": [
+    {
+      "what": "clear/knowledge/negatives/n-u-wc5gba.json:9 的 evidence 仍指 Clippings/超详细版…，而该文件已在本次交付移入 收集箱/（Clippings/ 现仅剩 10:51 那条新剪藏）；报告 §五/§八 与 AGENTS.md §七 已用新路径，条目本身未同步。",
+      "matters": "no"
+    },
+    {
+      "what": "报告 §五 自认的残差：交付时刻字面 wikilink 总数的差额（应得 125、实测 122，3 条已解析链接）无法逐条指认，因交付那一刻的 AGENTS.md 副本未保留；§八 取数时刻亦与 out.json 的 generated_at 不一致（12:42:51 vs 12:47:51）。",
+      "matters": "no"
+    }
+  ],
+  "lessons": [],
+  "basis": "判据 1–6 逐条成立：五个新文件存在且非空；两个 .base 的 YAML 可解析、与既有同构，项目库含三视图；收集箱/项目两个新主页 up 均指 [[home]] 且 home.md 各有 callout；diff 为 20a21,29、删除 0 行；AGENTS.md 四类同步项齐备、213 行、§一~§十四 各一次；报告列了新增/修改文件。在只读副本复跑 clear/models/base_filter_check.py：43 个 .md、字面 128/未解析 19、渲染 110/8、dangling=0，三桶 11+6+2=19 与登记一致，\"待消化\"命中 1 个（那份未改 frontmatter 的剪藏），三项目视图各 0。两条假设均未触及推翻条件。缺口只有报告自身的记账漂移（out.json 大小/取数时刻）与表格结构错位，不影响任何判据满足。",
+  "shortfalls": [
+    {
+      "criterion": "6) 报告列出全部新增/修改文件（记账与产物一致）",
+      "what": "clear/reports/知识库重构-校验记录.md:26 记 clear/models/base_filter_check.out.json 为 12566 B，实际为 13386 B（stat）；同表:29 声明「全部取自 out.json 的 artifacts 段…重跑即刷新」，而 out.json 比该表更新。§一 同表:3 同一行内并列「1857 B」与「已从 536 B 变为 1856 B」两个值。",
+      "missing": "把 out.json 一行的大小改成脚本 artifacts 段的当前值（13386 B），并统一 1857/1856 的一处措辞。"
+    },
+    {
+      "criterion": "6) 链接体检以脚本当次扫描为准（取数时刻）",
+      "what": "报告三处写当次 generated_at=2026-10-13T12:42:51+08:00（clear/reports/知识库重构-校验记录.md:44、:122、:187），而 out.json 的实际 generated_at 为 2026-10-13T12:47:51+08:00（clear/models/base_filter_check.out.json:2 附近）；:29 又写 12:47:51，同一份报告并存两个「当次」。",
+      "missing": "把 :44、:122、:187 的时刻与行号统一刷成最近一次运行（12:47:51）并只保留一个取数时刻。"
+    },
+    {
+      "criterion": "6) 报告列出全部新增/修改文件（清单可逐行读）",
+      "what": "clear/reports/知识库重构-校验记录.md:29 的表注被插在交付物表中间，其后 :30（mmcheck/）、:31（附件/）、:32–33（.dsh-vision-router、.obsidian/community-plugins.json）仍以表格行续写。",
+      "missing": "把 :30–33 移回 :14 之前的表格体，或把这些行另起一张表，使 §一 清单可被逐行清点。"
+    }
+  ],
+  "refs": [
+    {
+      "path": "clear/reports/知识库重构-校验记录.md",
+      "line": 26
+    },
+    {
+      "path": "clear/reports/知识库重构-校验记录.md",
+      "line": 29
+    },
+    {
+      "path": "clear/reports/知识库重构-校验记录.md",
+      "line": 44
+    },
+    {
+      "path": "clear/reports/知识库重构-校验记录.md",
+      "line": 122
+    },
+    {
+      "path": "clear/reports/知识库重构-校验记录.md",
+      "line": 187
+    },
+    {
+      "path": "clear/models/base_filter_check.py",
+      "line": 121
+    },
+    {
+      "path": "数据库/项目数据库.base",
+      "line": 1
+    },
+    {
+      "path": "数据库/收集箱数据库.base",
+      "line": 1
+    },
+    {
+      "path": "home.md",
+      "line": 22
+    },
+    {
+      "path": "home.md",
+      "line": 25
+    },
+    {
+      "path": "收集箱/收集箱.md",
+      "line": 1
+    },
+    {
+      "path": "项目/项目.md",
+      "line": 1
+    },
+    {
+      "path": "模板/项目模板.md",
+      "line": 1
+    },
+    {
+      "path": "AGENTS.md",
+      "line": 22
+    },
+    {
+      "path": "AGENTS.md",
+      "line": 75
+    },
+    {
+      "path": "AGENTS.md",
+      "line": 125
+    },
+    {
+      "path": "AGENTS.md",
+      "line": 158
+    },
+    {
+      "path": "clear/knowledge/negatives/n-u-wc5gba.json",
+      "line": 9
+    }
+  ],
+  "card": "判据 1–6 逐条成立：五个新文件存在且非空；两个 .base 的 YAML 可解析、与既有同构，项目库含三视图；收集箱/项目两个新主页 up 均指 [[home]] 且 home.md 各有 callout；diff 为 20a21,29、删除 0 行；AGENTS.md 四类同步项齐备、213 行、§一~§十四 各一次；报告列了新增/修改文件。在只读副本复跑 clear/models/base_filter_check.py：43 个 .md、字面 128/未解析 19、渲染 110/8、dangling=0，三桶 11+6+2=19 与登记一致，\"待消化\"命中 1 个（那份未改 frontmatter 的剪藏），三项目视图各 0。两条假设均未触及推翻条件。缺口只有报告自身的记账漂移（out.json 大小/取数时刻）与表格结构错位，不影响任何判据满足。",
+  "created_at": 1791866990877,
+  "evaluator": "independent"
+}

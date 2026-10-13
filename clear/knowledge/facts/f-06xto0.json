@@ -1,0 +1,131 @@
+{
+  "id": "f-06xto0",
+  "goal": "g-mv62a6fjugxy",
+  "hypothesis": "h-dlq9i8",
+  "text": "用 #status/* 层级标签 + .base 的 file.hasTag 过滤，能在不移动任何文件的前提下把项目分成 待处理/进行中/已完成 三态视图",
+  "about": [
+    "project",
+    "status_tag",
+    "proj_note",
+    "status_expressed_by",
+    "status_ongoing",
+    "inbox"
+  ],
+  "scope": "条件 既有笔记=不动、库=school、导航层=保持不变、触发方式=会话触发、插件=核心 Bases 1.9+;只覆盖 Obsidian 核心 Bases；社区插件视图不在范围内",
+  "scope_spec": {
+    "conditions": {
+      "既有笔记": "不动",
+      "库": "school",
+      "导航层": "保持不变",
+      "触发方式": "会话触发",
+      "插件": "核心 Bases 1.9+"
+    },
+    "ranges": {},
+    "note": "只覆盖 Obsidian 核心 Bases；社区插件视图不在范围内"
+  },
+  "refute_when": "Obsidian 的 file.hasTag 不能对层级标签做精确匹配，或一个 .base 文件不能同时容纳多个视图（各自带过滤条件）",
+  "level": "L3",
+  "evidence": [
+    "e-3evgos",
+    "e-3mwb5y"
+  ],
+  "evidence_records": [
+    {
+      "id": "e-3evgos",
+      "step": "s2",
+      "plan": "p-mv62bzdxi6mr",
+      "hypothesis": "h-dlq9i8",
+      "verdict": "support",
+      "level": "L2",
+      "evaluator": "self",
+      "basis": "过滤式从 .base 原样解析后求值：三份项目笔记各恰好命中 1 个视图，三态并集覆盖全部项目；只改 tags 一行即在视图间迁移，路径不变。官方文档另确认一个 base 可含多个视图、每个视图可各自过滤，以及 ![[File.base#View]] 可指定嵌入视图——两条推翻条件（层级标签不能精确匹配、一个 .base 不能容纳多视图）均未出现。",
+      "refs": [
+        "项目/项目.md",
+        "数据库/项目数据库.base",
+        "模板/项目模板.md"
+      ],
+      "origins": [
+        {
+          "kind": "artifact",
+          "path": "项目/项目.md"
+        },
+        {
+          "kind": "artifact",
+          "path": "数据库/项目数据库.base"
+        },
+        {
+          "kind": "artifact",
+          "path": "模板/项目模板.md"
+        }
+      ],
+      "anchor": "artifact",
+      "basis_reviewable": true,
+      "at": 1791858665210
+    },
+    {
+      "t": "evidence/recorded",
+      "id": "e-3mwb5y",
+      "step": "goal:g-mv62a6fjugxy",
+      "plan": "goal",
+      "hypothesis": "h-dlq9i8",
+      "verdict": "support",
+      "level": "L3",
+      "evaluator": "independent",
+      "basis": "数据库/项目数据库.base 含 3 个视图，各带 filter（file.inFolder(\"项目\") ∧ file.hasTag(\"status/进行中|待处理|已完成\")），副本复跑命中的三个集合互斥（各 0 篇，库里无项目笔记），direction_agrees 均 true；改 tags 一行不动文件即迁移，推翻条件两个分支都未被触发。",
+      "refs": [
+        "home.md"
+      ],
+      "origins": [
+        {
+          "kind": "audit-card",
+          "path": "clear/evidence/audits/ce0d63a01f2750e44c0b5381925ff4d887e088669c5d4a9ba29cab0b54f460f0/a32e0c324a84df8bbf41cc4f8f92b6fa9ac1c7e58ca65631d894810c7faffc38.json"
+        },
+        {
+          "kind": "evaluator-session",
+          "session": "20f1dc22-7774-4c0a-9845-09bff7fff7bf"
+        },
+        {
+          "kind": "artifact",
+          "path": "home.md",
+          "from_basis": true
+        }
+      ],
+      "anchor": "auditor",
+      "basis_reviewable": true
+    }
+  ],
+  "assertions": [
+    {
+      "object": {
+        "kind": "instance",
+        "type": "status_tag",
+        "value": "status_ongoing"
+      },
+      "predicate": "status_expressed_by",
+      "qualifiers": {
+        "载体": "frontmatter.tags"
+      },
+      "subject": {
+        "id": "proj_note",
+        "type": "project"
+      }
+    }
+  ],
+  "definitions": {
+    "status_expressed_by": "fnv:b0fd31cc",
+    "project": "fnv:5ea23402",
+    "status_tag": "fnv:bbeb7841",
+    "inbox": "fnv:e9e05e90"
+  },
+  "session": "session-cc12e3d6-86e1-49c9-bb23-59bd3ca814e3",
+  "status": "established",
+  "review": null,
+  "at": 1791866990912,
+  "history": [
+    {
+      "event": "promoted",
+      "at": 1791866990912,
+      "level": "L3"
+    }
+  ]
+}

@@ -1,0 +1,216 @@
+{
+  "id": "f-03tmmv",
+  "goal": "g-mv62a6fjugxy",
+  "hypothesis": "h-92w9e1",
+  "text": "收集箱视图用「在收集箱文件夹内 且 非主页 且 无已归档标签」过滤，就能做到往里丢东西时不必写任何 frontmatter；归档只加一个标签、不移动文件，碎片随即自动退出视图",
+  "about": [
+    "inbox",
+    "status_tag",
+    "inbox_drop",
+    "inbox_filtered_by",
+    "project"
+  ],
+  "scope": "条件 既有笔记=不动、库=school、导航层=保持不变、触发方式=会话触发、插件=核心 Bases",
+  "scope_spec": {
+    "conditions": {
+      "既有笔记": "不动",
+      "库": "school",
+      "导航层": "保持不变",
+      "触发方式": "会话触发",
+      "插件": "核心 Bases"
+    },
+    "ranges": {}
+  },
+  "refute_when": "not 组多条件的实际语义不是「以下任一成立即不显示」，导致主页自身或已归档碎片仍出现在待消化列表里",
+  "level": "L3",
+  "evidence": [
+    "e-r906sc",
+    "e-asa8nc",
+    "e-g2lqdi",
+    "e-qluvhj"
+  ],
+  "evidence_records": [
+    {
+      "id": "e-r906sc",
+      "step": "s1",
+      "plan": "p-mv62bzdxi6mr",
+      "hypothesis": "h-92w9e1",
+      "verdict": "support",
+      "level": "L2",
+      "evaluator": "self",
+      "basis": "筛选式对 5 个用例（主页自身、零标签碎片、已归档碎片、带其它标签的已归档碎片、文件夹外笔记）求值全部与预期一致：零 frontmatter 的碎片入选，主页与已归档碎片均被排除，且排除不依赖文件的移动或删除。未出现推翻条件所指的情形。",
+      "refs": [
+        "收集箱/收集箱.md",
+        "数据库/收集箱数据库.base"
+      ],
+      "origins": [
+        {
+          "kind": "artifact",
+          "path": "收集箱/收集箱.md"
+        },
+        {
+          "kind": "artifact",
+          "path": "数据库/收集箱数据库.base"
+        }
+      ],
+      "anchor": "artifact",
+      "basis_reviewable": true,
+      "at": 1791858622165
+    },
+    {
+      "id": "e-asa8nc",
+      "step": "t2",
+      "plan": "p-mv62v9szk829",
+      "hypothesis": "h-92w9e1",
+      "verdict": "support",
+      "level": "L3",
+      "evaluator": "independent",
+      "basis": "对照推翻条件「not 组语义不是『任一成立即不显示』，导致主页或已归档碎片仍出现在待消化列表」，在副本实跑脚本并独立复算：收集箱视图（and: [inFolder(\"收集箱\"), not: [hasTag(\"主页\"), hasTag(\"status/已归档\")]]，数据库/收集箱数据库.base:3-9）命中恰好 1 个文件（未改 frontmatter 的剪藏，tags 仅 clippings）；主页 收集箱/收集箱.md（tags: 主页）未入选；给剪藏模拟加 status/已归档 而不移动文件后命中变为 0；无 frontmatter 碎片仍入选。四个用例均未触发推翻条件。",
+      "refs": [
+        "clear/models/base_filter_check.py",
+        "clear/models/base_filter_check.out.json",
+        "clear/reports/知识库重构-校验记录.md"
+      ],
+      "origins": [
+        {
+          "kind": "artifact",
+          "path": "clear/models/base_filter_check.py"
+        },
+        {
+          "kind": "artifact",
+          "path": "clear/models/base_filter_check.out.json"
+        },
+        {
+          "kind": "artifact",
+          "path": "clear/reports/知识库重构-校验记录.md"
+        },
+        {
+          "kind": "audit-card",
+          "path": "clear/evidence/audits/c44474038d459e40e4714afefa7bf8dae9f9834b22f5e8ec1dd434ecb62b512e/155f7c07cab177c9b3b388dc9c8603fb88daa1c4c652f0f31bd4b521f7cc9c90.json"
+        },
+        {
+          "kind": "evaluator-session",
+          "session": "3937caa7-b78c-4628-b31a-a974b020848f"
+        }
+      ],
+      "anchor": "auditor",
+      "basis_reviewable": true,
+      "at": 1791859743411
+    },
+    {
+      "id": "e-g2lqdi",
+      "step": "t3",
+      "plan": "p-mv64nx53crla",
+      "hypothesis": "h-92w9e1",
+      "verdict": "support",
+      "level": "L3",
+      "evaluator": "independent",
+      "basis": "推翻条件未触发。asar 字符 3040189（＝字节 3045099）处 not 组 tQ.prototype.test 为 for(...if(filters[i].test)return false)return true，即「任一子条件成立即整体为假」，界面文案 labelNoneOfTheFollowing。副本复跑 数据库/收集箱数据库.base:6-9 = and[inFolder(\"收集箱\"), not[hasTag(\"主页\"), hasTag(\"status/已归档\")]] 命中仅那份未改 frontmatter 的剪藏，tags: 主页 的 收集箱/收集箱.md 不入选；探针另建无 frontmatter 碎片（入选）与 status/已归档 碎片（被排除），仿真复制了两种分支，无主页或已归档碎片残留。",
+      "refs": [
+        "clear/reports/知识库重构-校验记录.md",
+        "clear/models/base_filter_check.out.json",
+        "数据库/收集箱数据库.base",
+        "clear/models/base_filter_check.py",
+        "/tmp"
+      ],
+      "origins": [
+        {
+          "kind": "artifact",
+          "path": "clear/reports/知识库重构-校验记录.md"
+        },
+        {
+          "kind": "artifact",
+          "path": "clear/models/base_filter_check.out.json"
+        },
+        {
+          "kind": "artifact",
+          "path": "数据库/收集箱数据库.base"
+        },
+        {
+          "kind": "artifact",
+          "path": "clear/models/base_filter_check.py"
+        },
+        {
+          "kind": "audit-card",
+          "path": "clear/evidence/audits/cece8a9cecfb6c7e7ee4f3346d5e2544138bfb6e33bec6042a17333a4d3180b0/c8e185b539f5d44ddaa65c40f1bae2d942bd93ced295950515cf58826c832e38.json"
+        },
+        {
+          "kind": "evaluator-session",
+          "session": "8a52354d-4ae4-49c0-9168-578fcd45a03e"
+        },
+        {
+          "kind": "artifact",
+          "path": "/tmp",
+          "from_basis": true
+        }
+      ],
+      "anchor": "auditor",
+      "basis_reviewable": true,
+      "at": 1791862772628
+    },
+    {
+      "t": "evidence/recorded",
+      "id": "e-qluvhj",
+      "step": "goal:g-mv62a6fjugxy",
+      "plan": "goal",
+      "hypothesis": "h-92w9e1",
+      "verdict": "support",
+      "level": "L3",
+      "evaluator": "independent",
+      "basis": "副本复跑「待消化」= and:[inFolder(\"收集箱\"), not:[hasTag(\"主页\"), hasTag(\"status/已归档\")]]，命中恰 1 个（收集箱/超详细版…md，frontmatter 无 主页/status），主页 收集箱/收集箱.md（tags 含 主页）与文件夹外笔记命中 0；not 组多条件确实表现为「任一成立即不显示」，推翻条件未触发。",
+      "refs": [
+        "home.md"
+      ],
+      "origins": [
+        {
+          "kind": "audit-card",
+          "path": "clear/evidence/audits/ce0d63a01f2750e44c0b5381925ff4d887e088669c5d4a9ba29cab0b54f460f0/a32e0c324a84df8bbf41cc4f8f92b6fa9ac1c7e58ca65631d894810c7faffc38.json"
+        },
+        {
+          "kind": "evaluator-session",
+          "session": "20f1dc22-7774-4c0a-9845-09bff7fff7bf"
+        },
+        {
+          "kind": "artifact",
+          "path": "home.md",
+          "from_basis": true
+        }
+      ],
+      "anchor": "auditor",
+      "basis_reviewable": true
+    }
+  ],
+  "assertions": [
+    {
+      "object": {
+        "kind": "formula",
+        "value": "and(file.inFolder(\"收集箱\"), not(file.hasTag(\"主页\"), file.hasTag(\"status/已归档\")))"
+      },
+      "predicate": "inbox_filtered_by",
+      "qualifiers": {
+        "归档动作": "只给碎片加 #status/已归档 标签，不移动文件"
+      },
+      "subject": {
+        "id": "inbox_drop",
+        "type": "inbox"
+      }
+    }
+  ],
+  "definitions": {
+    "inbox_filtered_by": "fnv:fb88502b",
+    "inbox": "fnv:e9e05e90",
+    "project": "fnv:5ea23402",
+    "status_tag": "fnv:bbeb7841"
+  },
+  "session": "session-cc12e3d6-86e1-49c9-bb23-59bd3ca814e3",
+  "status": "established",
+  "review": null,
+  "at": 1791866990921,
+  "history": [
+    {
+      "event": "promoted",
+      "at": 1791866990921,
+      "level": "L3"
+    }
+  ]
+}
