@@ -27,7 +27,8 @@ OUT = Path(__file__).resolve().parent / 'base_filter_check.out.json'
 # 报告 §一 交付物清单里逐个报大小/行数的文件
 ARTIFACTS = ['home.md', 'AGENTS.md', '知识库工作流.md', '收集箱/收集箱.md', '项目/项目.md',
              '数据库/收集箱数据库.base', '数据库/项目数据库.base', '模板/项目模板.md',
-             'clear/models/base_filter_check.py', 'clear/reports/知识库重构-校验记录.md']
+             'clear/models/base_filter_check.py', 'clear/reports/知识库重构-校验记录.md',
+             '笔记/软件笔记/MOC - Git.md', 'clear/reports/MOC-迁移校验.md']
 
 
 def rel(p):

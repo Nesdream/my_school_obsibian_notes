@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-13T13:14:33+08:00",
+  "generated_at": "2026-10-13T13:16:32+08:00",
   "scope": {
     "vault_root": ".",
     "files_scanned": 44,
@@ -514,12 +514,20 @@
       "lines": 35
     },
     "clear/models/base_filter_check.py": {
-      "bytes": 12067,
-      "lines": 294
+      "bytes": 12153,
+      "lines": 295
     },
     "clear/reports/知识库重构-校验记录.md": {
       "bytes": 28178,
       "lines": 241
+    },
+    "笔记/软件笔记/MOC - Git.md": {
+      "bytes": 3594,
+      "lines": 64
+    },
+    "clear/reports/MOC-迁移校验.md": {
+      "bytes": 6658,
+      "lines": 75
     }
   }
 }
