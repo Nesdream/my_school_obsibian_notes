@@ -1,8 +1,8 @@
 {
-  "generated_at": "2026-10-13T12:47:37+08:00",
+  "generated_at": "2026-10-13T13:14:33+08:00",
   "scope": {
     "vault_root": ".",
-    "files_scanned": 43,
+    "files_scanned": 44,
     "skipped_dirs": [
       ".claudian",
       ".git",
@@ -14,12 +14,12 @@
     "note": "clear/ 是 AI 自己的运行目录，其内的 [[…]] 示例不计入本库链接统计"
   },
   "wikilinks": {
-    "total_literal": 128,
-    "total_rendered": 110,
-    "unresolved_literal": 19,
+    "total_literal": 146,
+    "total_rendered": 126,
+    "unresolved_literal": 21,
     "unresolved_rendered": 8,
     "by_bucket": {
-      "code": 11,
+      "code": 13,
       "template_placeholder": 6,
       "input_content": 2
     },
@@ -28,7 +28,7 @@
       "input_content": 2
     },
     "by_file": {
-      "AGENTS.md": 9,
+      "AGENTS.md": 11,
       "模板/主页模板.md": 5,
       "收集箱/超详细版：Obsidian + Claude Code 搭建个人知识库实践指南.md": 3,
       "Clippings/AI＋Obsidian保姆级教程：教你从0搭建自己的AI个人知识库.md": 1,
@@ -36,7 +36,7 @@
     },
     "by_bucket_file": {
       "code": {
-        "AGENTS.md": 9,
+        "AGENTS.md": 11,
         "收集箱/超详细版：Obsidian + Claude Code 搭建个人知识库实践指南.md": 2
       },
       "input_content": {
@@ -51,7 +51,7 @@
     "unresolved_detail": [
       {
         "file": "AGENTS.md",
-        "line": 46,
+        "line": 56,
         "raw": "[[链接]]",
         "target": "链接",
         "where": "inline_code",
@@ -60,7 +60,7 @@
       },
       {
         "file": "AGENTS.md",
-        "line": 87,
+        "line": 98,
         "raw": "[[笔记标题]]",
         "target": "笔记标题",
         "where": "inline_code",
@@ -69,7 +69,7 @@
       },
       {
         "file": "AGENTS.md",
-        "line": 93,
+        "line": 104,
         "raw": "[[...]]",
         "target": "...",
         "where": "inline_code",
@@ -78,7 +78,7 @@
       },
       {
         "file": "AGENTS.md",
-        "line": 93,
+        "line": 104,
         "raw": "[[笔记标题]]",
         "target": "笔记标题",
         "where": "inline_code",
@@ -87,7 +87,7 @@
       },
       {
         "file": "AGENTS.md",
-        "line": 109,
+        "line": 120,
         "raw": "![[…base]]",
         "target": "…base",
         "where": "inline_code",
@@ -96,7 +96,7 @@
       },
       {
         "file": "AGENTS.md",
-        "line": 112,
+        "line": 123,
         "raw": "![[xx数据库.base#视图名]]",
         "target": "xx数据库.base",
         "where": "inline_code",
@@ -105,7 +105,7 @@
       },
       {
         "file": "AGENTS.md",
-        "line": 121,
+        "line": 132,
         "raw": "[[上级主页]]",
         "target": "上级主页",
         "where": "inline_code",
@@ -114,7 +114,7 @@
       },
       {
         "file": "AGENTS.md",
-        "line": 121,
+        "line": 132,
         "raw": "[[条目一]]",
         "target": "条目一",
         "where": "inline_code",
@@ -123,9 +123,27 @@
       },
       {
         "file": "AGENTS.md",
-        "line": 121,
+        "line": 132,
         "raw": "[[对应数据库.base]]",
         "target": "对应数据库.base",
+        "where": "inline_code",
+        "bucket": "code",
+        "rendered": false
+      },
+      {
+        "file": "AGENTS.md",
+        "line": 158,
+        "raw": "[[双链]]",
+        "target": "双链",
+        "where": "inline_code",
+        "bucket": "code",
+        "rendered": false
+      },
+      {
+        "file": "AGENTS.md",
+        "line": 236,
+        "raw": "[[双链]]",
+        "target": "双链",
         "where": "inline_code",
         "bucket": "code",
         "rendered": false
@@ -389,18 +407,18 @@
           "filter": {
             "and": [
               "file.inFolder(\"笔记/软件笔记\")",
-              "file.hasTag(\"汇总\")"
+              "file.hasTag(\"type/MOC\")"
             ]
           },
           "hits": [
-            "笔记/软件笔记/Git 汇总.md"
+            "笔记/软件笔记/MOC - Git.md"
           ],
           "hits_by_direction": {
             "query_prefix": [
-              "笔记/软件笔记/Git 汇总.md"
+              "笔记/软件笔记/MOC - Git.md"
             ],
             "file_prefix": [
-              "笔记/软件笔记/Git 汇总.md"
+              "笔记/软件笔记/MOC - Git.md"
             ]
           },
           "direction_agrees": true
@@ -465,43 +483,43 @@
   "artifacts": {
     "home.md": {
       "bytes": 368,
-      "lines": 30
+      "lines": 29
     },
     "AGENTS.md": {
-      "bytes": 18569,
-      "lines": 214
+      "bytes": 22328,
+      "lines": 245
     },
     "知识库工作流.md": {
       "bytes": 2471,
-      "lines": 67
+      "lines": 66
     },
     "收集箱/收集箱.md": {
       "bytes": 1857,
-      "lines": 30
+      "lines": 29
     },
     "项目/项目.md": {
       "bytes": 666,
-      "lines": 30
+      "lines": 29
     },
     "数据库/收集箱数据库.base": {
       "bytes": 256,
-      "lines": 14
+      "lines": 13
     },
     "数据库/项目数据库.base": {
       "bytes": 643,
-      "lines": 35
+      "lines": 34
     },
     "模板/项目模板.md": {
       "bytes": 361,
-      "lines": 36
+      "lines": 35
     },
     "clear/models/base_filter_check.py": {
-      "bytes": 12049,
-      "lines": 295
+      "bytes": 12067,
+      "lines": 294
     },
     "clear/reports/知识库重构-校验记录.md": {
-      "bytes": 26887,
-      "lines": 236
+      "bytes": 28178,
+      "lines": 241
     }
   }
 }

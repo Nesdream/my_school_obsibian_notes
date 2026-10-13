@@ -4,7 +4,7 @@ views:
     filters:
       and:
         - file.inFolder("笔记/软件笔记")
-        - file.hasTag("汇总")
+        - file.hasTag("type/MOC")
     order:
       - file.name
       - tags
