@@ -265,7 +265,7 @@ result = {
     # 报告 §一 的「大小/行数」从这里取，重跑即刷新，避免手抄后漂移
     'artifacts': {
         a: {'bytes': (ROOT / a).stat().st_size,
-            'lines': len((ROOT / a).read_text(encoding='utf-8').split('\n'))}
+            'lines': (ROOT / a).read_text(encoding='utf-8').count('\n')}  # 与 wc -l 同口径
         for a in ARTIFACTS if (ROOT / a).exists()
     },
 }
