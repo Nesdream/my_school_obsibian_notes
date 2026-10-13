@@ -1,0 +1,6 @@
+{
+  "gloss": "以 #status/待处理|进行中|已完成|已归档 形式写在 frontmatter 的 tags 里，表达生命周期状态；由 .base 的 file.hasTag 过滤成视图",
+  "id": "status_tag",
+  "kind": "category",
+  "label": "状态标签"
+}
