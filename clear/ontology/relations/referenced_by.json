@@ -1,0 +1,10 @@
+{
+  "check": "入链清单：笔记/软件笔记/软件笔记.md、资源/软件工具/Git.md",
+  "domain": "moc",
+  "id": "referenced_by",
+  "kind": "defines",
+  "label": "被引用",
+  "range": {
+    "form": "reference"
+  }
+}

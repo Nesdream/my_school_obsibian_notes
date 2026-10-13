@@ -1,0 +1,10 @@
+{
+  "basis": "由 `笔记/软件笔记/Git 汇总.md` 于 2026-10-13 改名而来，内容按 §十五 规格重写",
+  "id": "git_moc",
+  "label": "Git 主题地图",
+  "provenance": {
+    "kind": "named",
+    "ref": "笔记/软件笔记/MOC - Git.md"
+  },
+  "type": "moc"
+}

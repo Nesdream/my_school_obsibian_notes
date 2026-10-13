@@ -1,0 +1,10 @@
+{
+  "check": "视图过滤式 = file.inFolder(\"笔记/软件笔记\") ∧ file.hasTag(\"type/MOC\")",
+  "domain": "moc",
+  "id": "lists_in_view",
+  "kind": "defines",
+  "label": "被视图列出",
+  "range": {
+    "form": "formula"
+  }
+}

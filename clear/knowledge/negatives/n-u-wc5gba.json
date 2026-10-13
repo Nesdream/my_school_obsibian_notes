@@ -11,16 +11,14 @@
   ],
   "about": [
     "Clippings/超详细版：Obsidian + Claude Code 搭建个人知识库实践指南.md",
-    "inbox",
-    "project",
-    "status_tag"
+    "git_moc"
   ],
   "scope": {
     "conditions": {
-      "既有笔记": "不动",
-      "库": "/home/esdream/文档/school",
-      "导航层": "保持不变",
-      "触发方式": "会话触发"
+      "改名授权": "用户 m01322「是，而且要考虑有人会阅读」",
+      "改动性质": "结构型（改既有文件的文件名与标签）",
+      "库": "school",
+      "读者": "开源后的人类读者"
     },
     "ranges": {}
   },
@@ -37,5 +35,5 @@
   },
   "review": null,
   "at": 1791858834390,
-  "updated": 1791858864039
+  "updated": 1791868366765
 }
