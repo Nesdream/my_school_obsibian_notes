@@ -1,0 +1,36 @@
+{
+  "id": "n-audit-pending-27880ee9b5458fc3d7b4c57585749a24-u2",
+  "kind": "unresolved",
+  "status": "explained",
+  "statement": "顶层空目录 附件/ 建于 10:58（库根目录 mtime 同为 10:58＝根下新增条目），报告 §一:14-25 清单与 AGENTS.md §二:22-32 权限表均无它，而 AGENTS.md:161 §十一 规定不新建顶级文件夹；无证据表明是谁建的",
+  "touches": [],
+  "evidence": [],
+  "about": [
+    "inbox",
+    "project",
+    "status_tag"
+  ],
+  "scope": {
+    "conditions": {
+      "既有笔记": "不动",
+      "库": "/home/esdream/文档/school",
+      "导航层": "保持不变",
+      "触发方式": "会话触发"
+    },
+    "ranges": {}
+  },
+  "resolution": {
+    "outcome": "explained",
+    "reason": "是我建的，有据可查：`附件/` 创建于 2026-10-13 10:58:42，对应你批准的那份指南采纳项第 ① 条「给附件设一个固定去处」（ask_user_question id=guide2_scope）。当时它只建成空目录，因为「附件默认存放路径」这项设置只能你在 Obsidian 界面里点（进程在跑，从外部改 app.json 会被覆盖）。**漏登记是真的**，已补：AGENTS.md §二 权限表加 `附件/` 行（「图片、PDF 等附件的固定落点」），§十一「不新建顶级文件夹」的括号里写明 `收集箱/`、`项目/`、`附件/` 三个都是 2026-10-13 经你批准后建的、已登记在 §二；报告 §一 交付物清单加 `附件/` 一行。",
+    "by": "AGENTS.md §二 权限表 `附件/` 行、§十一 括号说明、报告 §一 清单"
+  },
+  "source": {
+    "session": "session-cc12e3d6-86e1-49c9-bb23-59bd3ca814e3",
+    "goal": "g-mv62a6fjugxy",
+    "anomaly": "audit:pending:27880ee9b5458fc3d7b4c57585749a24#u2",
+    "by": "evaluator"
+  },
+  "review": null,
+  "at": 1791865331454,
+  "updated": 1791865599176
+}

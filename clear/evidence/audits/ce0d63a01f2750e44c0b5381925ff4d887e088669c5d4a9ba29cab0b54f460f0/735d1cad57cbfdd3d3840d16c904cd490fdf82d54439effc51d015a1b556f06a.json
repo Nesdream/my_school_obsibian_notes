@@ -1,0 +1,125 @@
+{
+  "schema_version": "clearai.audit.v2",
+  "kind": "goal_audit",
+  "step_id": "goal:g-mv62a6fjugxy",
+  "auditor_run_id": "e925aaa7-3249-499e-80cb-b94f186f5905",
+  "rechecks": [],
+  "reuse": [],
+  "holds": "no",
+  "results": [
+    {
+      "hypothesis": "h-dlq9i8",
+      "verdict": "support",
+      "basis": "两条推翻条件都未触发。asar 字节 2937900-2938250 的 hasTag.operate 为 r=e.getTags()（被查文件标签）＋ s.tagMatches(u)（u 为查询值），配合字节 2898430 的 tagMatches（n=this.lowerTag，n.startsWith(i) 且等长或下一字符为 /），真实方向是「文件标签以查询标签为前缀」⇒ 叶子标签 status/进行中 可精确命中；数据库/项目数据库.base:3、:14、:25 三视图各带 and:[inFolder(\"项目\"),hasTag(\"status/…\")]。副本探针注入 3 篇探针项目笔记后，进行中/待处理/已完成 各命中恰好 1 篇、互不重叠。降级说明：库内暂无真实项目笔记（三视图原本各 0），界面渲染未实测（报告 §六 已登记），但均非本条推翻条件。"
+    },
+    {
+      "hypothesis": "h-92w9e1",
+      "verdict": "support",
+      "basis": "推翻条件未触发。asar 字节 3045099 一带 not 组 test 为 for(...){if(n[t].test(e))return!1}＝「任一子条件为真即整体为假」；数据库/收集箱数据库.base:5-9 = and:[inFolder(\"收集箱\"), not:[hasTag(\"主页\"),hasTag(\"status/已归档\")]]。副本探针：新建无 frontmatter 碎片入选「待消化」，带 status/已归档 的碎片被排除，收集箱/收集箱.md（tags: 主页）不入选，真实剪藏（frontmatter 一字未改）是原有唯一命中——无主页或已归档碎片残留。"
+    }
+  ],
+  "anomalies": [
+    {
+      "what": "clear/reports/知识库重构-校验记录.md:162-166 把判据 6 的新口径记为「2026-10-13 用户裁定 · 方案 A」，但 clear/goals/g-mv62a6fjugxy.md:6 仍载原措辞、做的人的结论自陈该改写「在账上被拒」；可读材料里找不到这次裁定的凭据",
+      "matters": "yes"
+    },
+    {
+      "what": "顶层空目录 附件/ 建于 10:58（库根目录 mtime 同为 10:58＝根下新增条目），报告 §一:14-25 清单与 AGENTS.md §二:22-32 权限表均无它，而 AGENTS.md:161 §十一 规定不新建顶级文件夹；无证据表明是谁建的",
+      "matters": "unclear"
+    },
+    {
+      "what": ".obsidian/plugins 目录 11:01、.obsidian/community-plugins.json 11:02、.obsidian/plugins/obsidian-local-rest-api 11:02 落在交付窗口内，报告未登记；AGENTS.md §十一 禁改 .obsidian/，但现有证据更像用户装了 Local REST API 插件（§十四 同刻写入）",
+      "matters": "no"
+    },
+    {
+      "what": "clear/knowledge/negatives/n-u-wc5gba.json 的 evidence 仍指 Clippings/超详细版…，而该文件交付中已移入 收集箱/（clear/reports/知识库重构-校验记录.md:121、:139），报告已改、knowledge 条目路径未同步",
+      "matters": "no"
+    }
+  ],
+  "lessons": [
+    {
+      "lesson": "L1",
+      "verdict": "support",
+      "basis": "本机 /opt/Obsidian/resources/obsidian.asar 字节 2937900-2938250 独立读到 hasTag.operate：r=e.getTags()＋s.tagMatches(u)，字节 2898430 的 tagMatches 为 n.startsWith(i)，确证「文件标签以查询标签为前缀」；报告 clear/reports/知识库重构-校验记录.md:75 记下曾据函数体读反的经过，照它看调用点确实能避免再读反。"
+    },
+    {
+      "lesson": "L2",
+      "verdict": "support",
+      "basis": "记录里确有其事且已改造做法：clear/reports/知识库重构-校验记录.md:109-113 写明交付时刻的 AGENTS.md 副本未保留、3 条已解析链接差额无法逐条指认，并把「快照要连脚本版本与被扫文件清单一起存档」写成补救；本次复跑也印证「数字只在某一时刻成立」（报告 §五 41/123/18/103/7 与 §八 42/122/19/104/8 并存）。"
+    }
+  ],
+  "basis": "判据 1–5 逐条成立：5 个新文件存在且非空（256/361/643/666/1856 B）；7 个 .base 顶层均为 views、新建两个用 file.inFolder/file.hasTag、项目库含 待处理/进行中/已完成 三视图；两主页 up→[[home]]，home.md:22、:25 各有 callout；/tmp/home.orig(20 行) 对 home.md 的 diff 仅 20a21,26（0 删）；AGENTS.md 209 行，:23-24 权限表含两新目录、:76 项目模板、:125-126 status//type/、:157-159「消化收集箱」六步与触发口令。判据 6 后半「全库 wikilink 无悬空（0 个指向不存在文件）」按已登记口径不成立：在副本复跑产物自带脚本，未解析字面 19 条、渲染 8 条，全部指向不存在文件，「0」只在报告 §八 自行改写口径、而该改写无账本记录时才成立。两条判断的推翻条件都未被观测碰到。缺口只此一条判据。",
+  "shortfalls": [
+    {
+      "criterion": "判据 6「…且全库 wikilink 无悬空（0 个指向不存在文件）」",
+      "what": "副本复跑 clear/models/base_filter_check.py：clear/models/base_filter_check.out.json:19-20 为 unresolved_literal 19、unresolved_rendered 8（code 11／模板占位 6／输入内容 2），逐条明细全部指向不存在文件；报告 clear/reports/知识库重构-校验记录.md:144 亦自认「无论用哪个口径，『0 条未解析』都达不到」",
+      "missing": "要么把「0 个」换成可证伪口径并落进账本，要么把这 8 条（模板占位 6＋剪藏 frontmatter 作者 2）清到零——后者与 AGENTS.md:119 占位符例外、用户 m00475 决定冲突"
+    },
+    {
+      "criterion": "判据 6 的口径改写（本条判据的登记文本 vs 报告所述）",
+      "what": "clear/reports/知识库重构-校验记录.md:162-166 称用户经 ask_user_question（id=crit6_wording）裁定方案 A 改写判据 6，但目标投影 clear/goals/g-mv62a6fjugxy.md:6 仍是原措辞「0 个指向不存在文件」，做的人自己的结论也写明该改写在账上被拒",
+      "missing": "账本里 criteria/revised 的落定记录（含改写后的措辞），否则只能按登记原文判未达成"
+    }
+  ],
+  "refs": [
+    {
+      "path": "clear/models/base_filter_check.out.json",
+      "line": 19
+    },
+    {
+      "path": "clear/models/base_filter_check.out.json",
+      "line": 20
+    },
+    {
+      "path": "clear/reports/知识库重构-校验记录.md",
+      "line": 144
+    },
+    {
+      "path": "clear/reports/知识库重构-校验记录.md",
+      "line": 162
+    },
+    {
+      "path": "clear/reports/知识库重构-校验记录.md",
+      "line": 174
+    },
+    {
+      "path": "clear/goals/g-mv62a6fjugxy.md",
+      "line": 6
+    },
+    {
+      "path": "home.md",
+      "line": 22
+    },
+    {
+      "path": "home.md",
+      "line": 25
+    },
+    {
+      "path": "AGENTS.md",
+      "line": 23
+    },
+    {
+      "path": "AGENTS.md",
+      "line": 76
+    },
+    {
+      "path": "AGENTS.md",
+      "line": 125
+    },
+    {
+      "path": "AGENTS.md",
+      "line": 159
+    },
+    {
+      "path": "/opt/Obsidian/resources/obsidian.asar#byte2937900",
+      "line": 2937900
+    },
+    {
+      "path": "/opt/Obsidian/resources/obsidian.asar#byte3045099",
+      "line": 3045099
+    }
+  ],
+  "card": "判据 1–5 逐条成立：5 个新文件存在且非空（256/361/643/666/1856 B）；7 个 .base 顶层均为 views、新建两个用 file.inFolder/file.hasTag、项目库含 待处理/进行中/已完成 三视图；两主页 up→[[home]]，home.md:22、:25 各有 callout；/tmp/home.orig(20 行) 对 home.md 的 diff 仅 20a21,26（0 删）；AGENTS.md 209 行，:23-24 权限表含两新目录、:76 项目模板、:125-126 status//type/、:157-159「消化收集箱」六步与触发口令。判据 6 后半「全库 wikilink 无悬空（0 个指向不存在文件）」按已登记口径不成立：在副本复跑产物自带脚本，未解析字面 19 条、渲染 8 条，全部指向不存在文件，「0」只在报告 §八 自行改写口径、而该改写无账本记录时才成立。两条判断的推翻条件都未被观测碰到。缺口只此一条判据。",
+  "created_at": 1791865331410,
+  "evaluator": "independent"
+}

@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><title>PENDING</title>
+<style>body{background:#fff;color:#111;font-family:system-ui,sans-serif;margin:20px;min-height:600px}
+h2{font-size:15px;color:#555}div.mermaid{background:#fff}</style></head><body>
+<h2>图一 · 总流程（flowchart）</h2><div class="mermaid"></div>
+<h2>图二 · 项目状态（stateDiagram-v2）</h2><div class="mermaid"></div>
+<script src="mermaid.min.js"></script>
+<script>
+const D = ["flowchart TD\n    A[\"看到值得留的网页\"] --> B[\"Clippings/<br/>浏览器剪藏自动落地\"]\n    C[\"随手想到的东西\"] --> D[\"收集箱/<br/>未消化碎片\"]\n    B -->|\"第 0 步：收拢\"| D\n\n    subgraph DIGEST[\"消化 —— 对 AI 说一句「消化收集箱」\"]\n        E[\"读「待消化」视图\"] --> F{\"这是什么？\"}\n        F -->|资源| G[\"资源/\"]\n        F -->|知识点| H[\"笔记/\"]\n        F -->|有产出的活| I[\"项目/\"]\n        F -->|拿不准| J[\"留着不动，汇报里问人\"]\n        G --> K[\"原件加 status/已归档<br/>不删 · 不改 · 不移动\"]\n        H --> K\n        I --> K\n    end\n\n    D --> E\n    K --> L[\"碎片退出「待消化」视图<br/>原件仍留在 收集箱/\"]\n    G --> M[\"挂到所属主页\"]\n    H --> M\n    I --> N[\"项目数据库.base<br/>待处理 / 进行中 / 已完成\"]\n    M --> O[\"home.md → 各主页 → 条目\"]\n    N --> O\n", "stateDiagram-v2\n    direction LR\n    [*] --> 待处理 : 套 模板/项目模板.md\n    待处理 --> 进行中 : 改标签 status/进行中\n    进行中 --> 已完成 : 改标签 status/已完成\n    已完成 --> 进行中 : 返工时改回去\n"];
+document.querySelectorAll('div.mermaid').forEach((el,i)=>{ el.textContent = D[i]; });
+mermaid.initialize({startOnLoad:false, theme:'default'});
+mermaid.run().then(()=>{
+  const s = [].slice.call(document.querySelectorAll('svg'));
+  const h = s.reduce(function(a,x){ return a + x.getBoundingClientRect().height; }, 0);
+  // 成功信号：页面高度 = 640 + 两张图实际渲染高度之和
+  document.body.style.minHeight = (640 + Math.round(h)) + 'px';
+  document.title = 'RENDER_OK_' + s.length + '_h' + Math.round(h);
+}).catch(e=>{
+  document.body.insertAdjacentHTML('beforeend','<pre style="color:#b00;font-size:20px">RENDER_FAIL '+e.message+'</pre>');
+});
+</script></body></html>

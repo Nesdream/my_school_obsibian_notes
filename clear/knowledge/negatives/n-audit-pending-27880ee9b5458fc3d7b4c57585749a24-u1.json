@@ -1,0 +1,36 @@
+{
+  "id": "n-audit-pending-27880ee9b5458fc3d7b4c57585749a24-u1",
+  "kind": "unresolved",
+  "status": "explained",
+  "statement": "clear/reports/知识库重构-校验记录.md:162-166 把判据 6 的新口径记为「2026-10-13 用户裁定 · 方案 A」，但 clear/goals/g-mv62a6fjugxy.md:6 仍载原措辞、做的人的结论自陈该改写「在账上被拒」；可读材料里找不到这次裁定的凭据",
+  "touches": [],
+  "evidence": [],
+  "about": [
+    "inbox",
+    "project",
+    "status_tag"
+  ],
+  "scope": {
+    "conditions": {
+      "既有笔记": "不动",
+      "库": "/home/esdream/文档/school",
+      "导航层": "保持不变",
+      "触发方式": "会话触发"
+    },
+    "ranges": {}
+  },
+  "resolution": {
+    "outcome": "explained",
+    "reason": "两处说法都对，差别在「哪一个才是账本」。报告里那段措辞确实来自用户的裁定（2026-10-13 的 ask_user_question，id=crit6_wording，方案 A），已落盘在报告 §八；而**目标的登记判据文本由系统账本持有**，改写它要引一份「已落定」的独立裁决（criteria_verdict），账里只有 `audit:pending:` 条目——四条候选 key（ee6c9716、451d23ea、557a104f、632c0559）全部被拒，最后一条即使把它名下四条未解释项全解释完、并先收尾计划也一样。已在报告 §八 开头补一段显式的「⚠️ 这一节是『用户的裁定』，不是账本变更」，把两边不一致及原因写在一起。",
+    "by": "clear/reports/知识库重构-校验记录.md §八 开头新增的说明段"
+  },
+  "source": {
+    "session": "session-cc12e3d6-86e1-49c9-bb23-59bd3ca814e3",
+    "goal": "g-mv62a6fjugxy",
+    "anomaly": "audit:pending:27880ee9b5458fc3d7b4c57585749a24#u1",
+    "by": "evaluator"
+  },
+  "review": null,
+  "at": 1791865331454,
+  "updated": 1791865599164
+}
