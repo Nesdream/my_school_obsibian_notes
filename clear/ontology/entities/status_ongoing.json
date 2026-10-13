@@ -1,0 +1,10 @@
+{
+  "basis": "项目条目的进行中状态取值 #status/进行中",
+  "id": "status_ongoing",
+  "label": "#status/进行中",
+  "provenance": {
+    "kind": "named",
+    "ref": "AGENTS.md"
+  },
+  "type": "status_tag"
+}

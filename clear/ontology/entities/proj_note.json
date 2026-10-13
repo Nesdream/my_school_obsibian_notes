@@ -1,0 +1,10 @@
+{
+  "basis": "本次方案规定：一个项目一份笔记，状态写在 frontmatter 的 tags 里；条目的字段契约见 模板/项目模板.md",
+  "id": "proj_note",
+  "label": "项目条目（一个项目一份笔记）",
+  "provenance": {
+    "kind": "named",
+    "ref": "AGENTS.md"
+  },
+  "type": "project"
+}

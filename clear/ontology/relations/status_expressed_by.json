@@ -1,0 +1,9 @@
+{
+  "check": "项目笔记 frontmatter 的 tags 里恰好含一个 status/* 值",
+  "domain": "project",
+  "functional": true,
+  "id": "status_expressed_by",
+  "kind": "defines",
+  "label": "状态由…表达",
+  "range": "status_tag"
+}

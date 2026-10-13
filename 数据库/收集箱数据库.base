@@ -1,0 +1,13 @@
+views:
+  - type: table
+    name: 待消化
+    filters:
+      and:
+        - file.inFolder("收集箱")
+        - not:
+            - file.hasTag("主页")
+            - file.hasTag("status/已归档")
+    order:
+      - file.name
+      - tags
+    sort: []

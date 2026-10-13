@@ -1,0 +1,10 @@
+{
+  "basis": "投进 收集箱/ 的未消化碎片；收集箱视图的筛选对象",
+  "id": "inbox_drop",
+  "label": "收集箱里的碎片",
+  "provenance": {
+    "kind": "named",
+    "ref": "AGENTS.md"
+  },
+  "type": "inbox"
+}

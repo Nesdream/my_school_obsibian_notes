@@ -1,0 +1,10 @@
+{
+  "check": "视图筛选式 = 在收集箱文件夹内 ∧ 非主页 ∧ 无 #status/已归档",
+  "domain": "inbox",
+  "id": "inbox_filtered_by",
+  "kind": "defines",
+  "label": "待消化由…界定",
+  "range": {
+    "form": "formula"
+  }
+}
